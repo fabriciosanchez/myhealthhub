@@ -2,18 +2,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace myhealthhub.api.Models.Entities
 {
-    public class FormLabel
+    public class Physician
     {
+        [Key]
         [Required]
-        [Display(Name = "Form Label Id")]
         public Guid Id { get; set; }
 
         [Required]
         public string Name { get; set; }
 
-        public string? Description { get; set; }
+        [Required]
+        public string Email { get; set; }
 
-        public List<FormLabelPerVisit>? FormsLabelsPerVisits { get; set; }
+        public List<StudyPerPhysician>? StudiesPerPhysicians { get; set; }
 
         public List<TrialCompletionForm>? TrialCompletionForms { get; set; }
     }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myhealthhub.api.Models;
 
@@ -11,9 +12,10 @@ using myhealthhub.api.Models;
 namespace myhealthhub.api.Migrations
 {
     [DbContext(typeof(MyHealthHubContext))]
-    partial class MyHealthHubContextModelSnapshot : ModelSnapshot
+    [Migration("20220414153810_AddingUploadsAndItsRelationships")]
+    partial class AddingUploadsAndItsRelationships
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,21 +58,6 @@ namespace myhealthhub.api.Migrations
                     b.HasIndex("VisitId");
 
                     b.ToTable("FormLabelsPerVisits");
-                });
-
-            modelBuilder.Entity("myhealthhub.api.Models.Entities.Patient", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Patients");
                 });
 
             modelBuilder.Entity("myhealthhub.api.Models.Entities.Physician", b =>
@@ -146,87 +133,6 @@ namespace myhealthhub.api.Migrations
                     b.ToTable("StudiesPerVisits");
                 });
 
-            modelBuilder.Entity("myhealthhub.api.Models.Entities.TrialCompletionForm", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("APIImagesCollectionStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("AdjustmentsMadeTrialPeriodStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("BloodPressure")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BodyWeight")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateTimeRemovalNeuromodulation")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateTrialImplant")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("FormLabelId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("ImageAddedEncryptedDriveStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LateralImagesCollectionStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("PainLocationNatureStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid>("PhysicianId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("SiteId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SiteName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SpinalLevelCoverageLead1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SpinalLevelCoverageLead2")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("StudyTreatmentFeedbackStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SubjectId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("VideoMotorAssessmentStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid>("VisitId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FormLabelId");
-
-                    b.HasIndex("PhysicianId");
-
-                    b.HasIndex("VisitId");
-
-                    b.ToTable("TrialCompletionForms");
-                });
-
             modelBuilder.Entity("myhealthhub.api.Models.Entities.Upload", b =>
                 {
                     b.Property<Guid>("Id")
@@ -266,24 +172,6 @@ namespace myhealthhub.api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Visits");
-                });
-
-            modelBuilder.Entity("myhealthhub.api.Models.Entities.VisitPerPatient", b =>
-                {
-                    b.Property<Guid>("PatientId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("VisitId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("PatientId", "VisitId");
-
-                    b.HasIndex("VisitId");
-
-                    b.ToTable("VisitsPerPatients");
                 });
 
             modelBuilder.Entity("myhealthhub.api.Models.Entities.FormLabelPerVisit", b =>
@@ -343,33 +231,6 @@ namespace myhealthhub.api.Migrations
                     b.Navigation("Visit");
                 });
 
-            modelBuilder.Entity("myhealthhub.api.Models.Entities.TrialCompletionForm", b =>
-                {
-                    b.HasOne("myhealthhub.api.Models.Entities.FormLabel", "FormsLabels")
-                        .WithMany("TrialCompletionForms")
-                        .HasForeignKey("FormLabelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("myhealthhub.api.Models.Entities.Physician", "Physician")
-                        .WithMany("TrialCompletionForms")
-                        .HasForeignKey("PhysicianId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("myhealthhub.api.Models.Entities.Visit", "Visit")
-                        .WithMany("TrialCompletionForms")
-                        .HasForeignKey("VisitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FormsLabels");
-
-                    b.Navigation("Physician");
-
-                    b.Navigation("Visit");
-                });
-
             modelBuilder.Entity("myhealthhub.api.Models.Entities.Upload", b =>
                 {
                     b.HasOne("myhealthhub.api.Models.Entities.Visit", "Visit")
@@ -381,42 +242,14 @@ namespace myhealthhub.api.Migrations
                     b.Navigation("Visit");
                 });
 
-            modelBuilder.Entity("myhealthhub.api.Models.Entities.VisitPerPatient", b =>
-                {
-                    b.HasOne("myhealthhub.api.Models.Entities.Patient", "Patient")
-                        .WithMany("VisitsPerPatients")
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("myhealthhub.api.Models.Entities.Visit", "Visit")
-                        .WithMany("VisitsPerPatients")
-                        .HasForeignKey("VisitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Patient");
-
-                    b.Navigation("Visit");
-                });
-
             modelBuilder.Entity("myhealthhub.api.Models.Entities.FormLabel", b =>
                 {
                     b.Navigation("FormsLabelsPerVisits");
-
-                    b.Navigation("TrialCompletionForms");
-                });
-
-            modelBuilder.Entity("myhealthhub.api.Models.Entities.Patient", b =>
-                {
-                    b.Navigation("VisitsPerPatients");
                 });
 
             modelBuilder.Entity("myhealthhub.api.Models.Entities.Physician", b =>
                 {
                     b.Navigation("StudiesPerPhysicians");
-
-                    b.Navigation("TrialCompletionForms");
                 });
 
             modelBuilder.Entity("myhealthhub.api.Models.Entities.Study", b =>
@@ -432,11 +265,7 @@ namespace myhealthhub.api.Migrations
 
                     b.Navigation("StudiesPerVisits");
 
-                    b.Navigation("TrialCompletionForms");
-
                     b.Navigation("Uploads");
-
-                    b.Navigation("VisitsPerPatients");
                 });
 #pragma warning restore 612, 618
         }

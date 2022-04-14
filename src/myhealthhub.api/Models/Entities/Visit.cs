@@ -20,5 +20,11 @@ namespace myhealthhub.api.Models.Entities
         public List<FormLabelPerVisit>? FormsLabelsPerVisits { get; set; }
 
         public List<StudyPerVisit>? StudiesPerVisits { get; set; }
+
+        public List<Upload>? Uploads { get; set; }
+
+        public List<VisitPerPatient>? VisitsPerPatients { get; set; }
+
+        public List<TrialCompletionForm>? TrialCompletionForms { get; set; }
     }
 }

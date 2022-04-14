@@ -14,5 +14,7 @@ namespace myhealthhub.api.Models.Entities
         public string? Description { get; set; }
 
         public List<StudyPerVisit>? StudiesPerVisits { get; set; }
+
+        public List<StudyPerPhysician>? StudiesPerPhysicians { get; set; }
     }
 }
