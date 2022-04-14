@@ -20,7 +20,8 @@
         "AzureAd:Domain": "americasuniversity.net",
         "AzureAd:TenantId": "05d02840-af0d-4434-91a4-9d3ba3654bb0",
         "AzureAd:ClientId": "7e5700df-6224-4ce7-8ac4-1b67ed8c960a",
-        "AzureAd:AllowWebApiToBeAuthorizedByACL": "true"
+        "AzureAd:AllowWebApiToBeAuthorizedByACL": "true",
+        "ConnectionStrings:DBConnection": "Server=localhost,1433;Database=MyHealthHubDb;User Id=SA;Password=3wuutxsx@;MultipleActiveResultSets=True"
       }
     },
     "IIS Express": {
