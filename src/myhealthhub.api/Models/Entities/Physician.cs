@@ -17,5 +17,9 @@ namespace myhealthhub.api.Models.Entities
         public List<StudyPerPhysician>? StudiesPerPhysicians { get; set; }
 
         public List<TrialCompletionForm>? TrialCompletionForms { get; set; }
+
+        public List<TrialForm>? TrialForms { get; set; }
+
+        public List<BaselineForm>? BaselineForms { get; set; }
     }
 }

@@ -27,6 +27,10 @@ namespace myhealthhub.api.Models
 
         public DbSet<TrialCompletionForm> TrialCompletionForms { get; set; }
 
+        public DbSet<TrialForm> TrialForms { get; set; }
+
+        public DbSet<BaselineForm> BaselineForms { get; set; }
+
         public MyHealthHubContext(DbContextOptions<MyHealthHubContext> options) : base(options) {  }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

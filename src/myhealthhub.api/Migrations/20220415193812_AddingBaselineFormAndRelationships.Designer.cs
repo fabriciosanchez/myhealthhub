@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myhealthhub.api.Models;
 
@@ -11,9 +12,10 @@ using myhealthhub.api.Models;
 namespace myhealthhub.api.Migrations
 {
     [DbContext(typeof(MyHealthHubContext))]
-    partial class MyHealthHubContextModelSnapshot : ModelSnapshot
+    [Migration("20220415193812_AddingBaselineFormAndRelationships")]
+    partial class AddingBaselineFormAndRelationships
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -475,7 +477,7 @@ namespace myhealthhub.api.Migrations
 
                     b.HasIndex("VisitId");
 
-                    b.ToTable("BaselineForms");
+                    b.ToTable("BaselineForm");
                 });
 
             modelBuilder.Entity("myhealthhub.api.Models.Entities.FormLabel", b =>
