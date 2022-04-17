@@ -19,7 +19,6 @@ namespace myhealthhub.api.Controllers
 
         [Authorize]
         [HttpGet]
-        [Route("all")]
         public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
         {
             return await _context.Patients.ToListAsync();
