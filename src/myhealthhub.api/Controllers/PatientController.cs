@@ -6,6 +6,7 @@ using myhealthhub.api.Models.Entities;
 
 namespace myhealthhub.api.Controllers
 {
+    [Authorize]
     [Route("api/v1/[controller]")]
     [ApiController]
     public class PatientController : ControllerBase
@@ -17,14 +18,12 @@ namespace myhealthhub.api.Controllers
             _context = context;
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
         {
             return await _context.Patients.ToListAsync();
         }
 
-        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Patient>> GetPatient(string id)
         {
@@ -38,7 +37,20 @@ namespace myhealthhub.api.Controllers
             return patient;
         }
 
-        [Authorize]
+        [HttpGet("{email}")]
+        [Route("byemail/{email}")]
+        public async Task<ActionResult<Patient>> GetPatientByEmail(string email)
+        {
+            var patient = await _context.Patients.Where(x => x.Email == email).FirstOrDefaultAsync();
+
+            if(patient == null)
+            {
+                return NotFound();
+            }
+
+            return patient;
+        }
+
         [HttpPost]
         public async Task<ActionResult<Patient>> PostPatient(Patient patient)
         {
