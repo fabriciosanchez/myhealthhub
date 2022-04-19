@@ -279,7 +279,7 @@ namespace myhealthhub.api.Models.Entities
         public bool PostAmputationStatus { get; set; }
 
         [Required]
-        public bool SubjectPrimaryChronicPainIndication { get; set; }
+        public string SubjectPrimaryChronicPainIndication { get; set; }
 
         public bool TreatmentForPainStatus { get; set; }
 
@@ -300,7 +300,7 @@ namespace myhealthhub.api.Models.Entities
         public string? TreatmentYesHypnotherapy { get; set; }
 
         [Required]
-        public string InjectionsInterventionsStatus { get; set; }
+        public bool InjectionsInterventionsStatus { get; set; }
 
         public string? IITransforraminal { get; set; }
 

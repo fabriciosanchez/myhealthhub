@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myhealthhub.api.Models;
 
@@ -11,9 +12,10 @@ using myhealthhub.api.Models;
 namespace myhealthhub.api.Migrations
 {
     [DbContext(typeof(MyHealthHubContext))]
-    partial class MyHealthHubContextModelSnapshot : ModelSnapshot
+    [Migration("20220419181417_ChangingDataTypeColumnInjectionsInterventionsStatus")]
+    partial class ChangingDataTypeColumnInjectionsInterventionsStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -313,8 +315,9 @@ namespace myhealthhub.api.Migrations
                     b.Property<bool>("ImplantableDrug")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("InjectionsInterventionsStatus")
-                        .HasColumnType("bit");
+                    b.Property<string>("InjectionsInterventionsStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InsuranceSituation")
                         .IsRequired()
@@ -412,9 +415,8 @@ namespace myhealthhub.api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SubjectPrimaryChronicPainIndication")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("SubjectPrimaryChronicPainIndication")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("TimeChronicPainMonths")
                         .HasColumnType("int");

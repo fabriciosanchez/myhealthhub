@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myhealthhub.api.Models;
 
@@ -11,9 +12,10 @@ using myhealthhub.api.Models;
 namespace myhealthhub.api.Migrations
 {
     [DbContext(typeof(MyHealthHubContext))]
-    partial class MyHealthHubContextModelSnapshot : ModelSnapshot
+    [Migration("20220419175119_ChangingDataTypeColumnSubjectPrimaryChronicPainIndication")]
+    partial class ChangingDataTypeColumnSubjectPrimaryChronicPainIndication
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -313,8 +315,9 @@ namespace myhealthhub.api.Migrations
                     b.Property<bool>("ImplantableDrug")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("InjectionsInterventionsStatus")
-                        .HasColumnType("bit");
+                    b.Property<string>("InjectionsInterventionsStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InsuranceSituation")
                         .IsRequired()
