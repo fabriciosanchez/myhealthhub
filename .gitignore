@@ -353,3 +353,8 @@ MigrationBackup/
 .vscode/
 Properties/
 launchSettings.json
+
+# Mac files
+.DS_Store
+.DS_store
+.ds_store
