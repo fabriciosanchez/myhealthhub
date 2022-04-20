@@ -26,6 +26,7 @@ namespace myhealthhub.api.Controllers
 
 
         [HttpGet("{id}")]
+        [Route("byid/{id}")]
         public async Task<ActionResult<TrialCompletionForm>> GetTrialCompletionForm(string id)
         {
             var trialCompletionForm = await _context.TrialCompletionForms.FindAsync(Guid.Parse(id));

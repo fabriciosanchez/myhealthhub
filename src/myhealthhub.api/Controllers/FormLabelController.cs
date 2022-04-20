@@ -26,6 +26,7 @@ namespace myhealthhub.api.Controllers
 
 
         [HttpGet("{id}")]
+        [Route("byid/{id}")]
         public async Task<ActionResult<FormLabel>> GetFormLabel(string id)
         {
             var formLabel = await _context.FormsLabels.FindAsync(Guid.Parse(id));

@@ -26,6 +26,7 @@ namespace myhealthhub.api.Controllers
 
 
         [HttpGet("{id}")]
+        [Route("byid/{id}")]
         public async Task<ActionResult<Physician>> GetPhysician(string id)
         {
             var physician = await _context.Physicians.FindAsync(Guid.Parse(id));
