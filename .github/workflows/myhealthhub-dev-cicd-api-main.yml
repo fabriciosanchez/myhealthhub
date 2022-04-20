@@ -1,9 +1,11 @@
 name: myhealthhub-dev-cicd-api
 
-# Only trigger when the build workflow succeeded
 on:
-  workflow_run:
-
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  
 jobs:
   build:
 
