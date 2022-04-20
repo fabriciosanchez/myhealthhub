@@ -36,6 +36,14 @@ jobs:
         AzureAd.Domain: ${{ secrets.AZUREAD_DOMAIN }}
         AzureAd.TenantId: ${{ secrets.AZUREAD_TENANTID }}
         AzureAd.ClientId: ${{ secrets.AZUREAD_CLIENTID }}
+        
+    - name: Update database (EF migrations)
+      run: |
+        dotnet tool install --global dotnet-ef
+        dotnet tool restore
+        dotnet ef database update -c MyHealthHubContext -p .\src\myhealthhub.api\
+      env:
+        ASPNETCORE_ENVIRONMENT: Production
       
     - name: Build
       run: dotnet build --no-restore --configuration Release
