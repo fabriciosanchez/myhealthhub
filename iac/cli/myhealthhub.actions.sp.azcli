@@ -1,0 +1,12 @@
+# AUTHENTICATING WITH MICROSOFT AZURE
+az login
+
+# DEFINING THE SUBSCRIPTION TO BE WORKING ON
+az account set -s "<your-subscription-id-here>"
+
+# CREATES A SERVICE PRINCIPAL FOR API'S WEB APP
+az ad sp create-for-rbac \
+    --name "<your-webapp-name-here>" \
+    --role contributor \
+    --scopes /subscriptions/<your-tenant-id-here>/resourceGroups/Demo-MyHealthHub/providers/Microsoft.Web/sites/<your-webapp-name-here> \
+    --sdk-auth
