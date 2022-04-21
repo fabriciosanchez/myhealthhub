@@ -112,6 +112,10 @@ az webapp config appsettings set \
     -n $WEBAPP \
     --settings AzureAd:AllowWebApiToBeAuthorizedByACL=true
 
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPP \
+    --settings ConnectionStrings:StorageAccount=<your-storage-account-connection-string>
 # CREATING DATABASE CONNECTION STRING
 az webapp config connection-string set \
     --connection-string-type SQLAzure \
