@@ -34,6 +34,7 @@ jobs:
         files: 'src/myhealthhub.api/appsettings.json'
       env:
         ConnectionStrings.DBConnection: ${{ secrets.DB_CONNECTION_STRING_DEV_PROD }}
+        ConnectionStrings.StorageAccount: ${{ secrets.STORAGE_CONNECTION_STRING_DEV_PROD }}
         AzureAd.Instance: ${{ secrets.AZUREAD_INSTANCE }}
         AzureAd.Domain: ${{ secrets.AZUREAD_DOMAIN }}
         AzureAd.TenantId: ${{ secrets.AZUREAD_TENANTID }}
