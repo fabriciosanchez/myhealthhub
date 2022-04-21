@@ -21,7 +21,8 @@
         "AzureAd:TenantId": "05d02840-af0d-4434-91a4-9d3ba3654bb0",
         "AzureAd:ClientId": "7e5700df-6224-4ce7-8ac4-1b67ed8c960a",
         "AzureAd:AllowWebApiToBeAuthorizedByACL": "true",
-        "ConnectionStrings:DBConnection": "Server=localhost,1433;Database=MyHealthHubDb;User Id=SA;Password=3wuutxsx@;MultipleActiveResultSets=True"
+        "ConnectionStrings:DBConnection": "Server=localhost,1433;Database=MyHealthHubDb;User Id=SA;Password=3wuutxsx@;MultipleActiveResultSets=True",
+        "ConnectionStrings:StorageAccount": "DefaultEndpointsProtocol=https;AccountName=myhealthhubdevstorage;AccountKey=JV4fbUedDu3ro37JYXSYhHfcq8QhRSKMSNmNBDE+T/6+43DkGsBwzU9F1tl1UczYs/NkYDPdrkBi+AStuZIRwA==;EndpointSuffix=core.windows.net"
       }
     },
     "IIS Express": {

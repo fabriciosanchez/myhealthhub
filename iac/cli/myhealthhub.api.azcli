@@ -8,6 +8,8 @@ APPSERVICEPLAN="<your-app-service-plan-name-here>"
 WEBAPP="<your-webapp-name-here>"
 SQLSERVER="<your-sql-server-name-here>"
 SQLDB="<your-sql-db-name-here>"
+STORAGE="<your-storage-account-name>"
+CONTAINER="files"
 
 # AUTHENTICATING USER WITH MICROSOFT AZURE
 az login
@@ -116,3 +118,19 @@ az webapp config connection-string set \
     --name $WEBAPP \
     -g $RG \
     --settings ConnectionStrings:DBConnection='<your-sqlserver-info-here>;Database=<your-database-name>;User Id=<your-database-username>;Password=<your-database-password>;MultipleActiveResultSets=True'
+
+# CREATING STORAGE ACCOUNT AND CONTAINER FOR UPLOADS
+az storage account create \
+    -n $STORAGE \
+    -g $RG \
+    --access-tier Hot \
+    --allow-blob-public-access true \
+    --location $LOCATION \
+    --kind StorageV2 \
+    --sku Standard_LRS
+
+az storage container create \
+    -n $CONTAINER \
+    --resource-group $RG \
+    --account-name $STORAGE \
+    --public-access container
