@@ -26,7 +26,6 @@ jobs:
     - name: Setup NuGet.exe for restore
       uses: NuGet/setup-nuget@v1.0.5
     - run: nuget restore .\src\myhealthhub.api\myhealthhub.api.csproj
-      working-directory: .\src\myhealthhub.api
       
     #substitute production appsettings entries to appsettings json file
     - name: App Settings Variable Substitution
