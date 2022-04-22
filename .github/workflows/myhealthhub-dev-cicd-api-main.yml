@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'aux/**'
   workflow_dispatch:
   
 jobs:
