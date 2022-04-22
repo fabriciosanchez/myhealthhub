@@ -34,7 +34,8 @@ namespace myhealthhub.api.Services
 
             foreach (var file in uploadModel.Files)
             {
-                string fileName = $"{_helper.GenerateDateAsString()}_{_helper.GenerateGuidAsString()}_{headers.PatientGivenName}-{headers.PatientFamilyName}";
+                // Pattern: {date}_{unique id}_{patient internal id}_{visit name}.{extension}
+                string fileName = $"{_helper.GenerateDateAsString()}_{_helper.GenerateGuidAsString()}_{headers.PatientInternalId}_{headers.PatientVisitName}";
                 var extension = Path.GetExtension(file.FileName);
                 var fileNameAndExtension = $"{fileName}{extension}";
                 string fileNameAndExtensioNoSpace = fileNameAndExtension.Replace(" ","-");
@@ -49,7 +50,7 @@ namespace myhealthhub.api.Services
                 // Populates upload object
                 upload.Id = Guid.NewGuid();
                 upload.FileName = fileNameAndExtensionNoDiacritics;
-                upload.VisitId = Guid.Parse(headers.PatientVisit);
+                upload.VisitId = Guid.Parse(headers.PatientVisitId);
 
                 await _databaseManager.Create<Upload>(upload);
             }

@@ -6,12 +6,12 @@ namespace myhealthhub.api.Models.DTOs
     {
 
         [FromHeader]
-        public string PatientGivenName { get; set; }
+        public string PatientInternalId { get; set; }
 
         [FromHeader]
-        public string PatientFamilyName { get; set; }
+        public string PatientVisitId { get; set; }
 
         [FromHeader]
-        public string PatientVisit { get; set; }
+        public string PatientVisitName { get; set; }
     }
 }
