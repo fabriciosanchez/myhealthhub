@@ -2,14 +2,15 @@
 
 # GLOBAL VARIABLES
 SUBSCRIPTION="<your-subscription-id-here>"
-RG="<your-resource-group-here>"
-LOCATION="<your-azure-region-here>"
+RG="<your-resource-group-name>"
+LOCATION="eastus"
 APPSERVICEPLAN="<your-app-service-plan-name-here>"
-WEBAPP="<your-webapp-name-here>"
+WEBAPP="<your-webapp-name>"
 SQLSERVER="<your-sql-server-name-here>"
 SQLDB="<your-sql-db-name-here>"
 STORAGE="<your-storage-account-name>"
 CONTAINER="files"
+APIM="<your-apim-name>"
 
 # AUTHENTICATING USER WITH MICROSOFT AZURE
 az login
@@ -138,3 +139,493 @@ az storage container create \
     --resource-group $RG \
     --account-name $STORAGE \
     --public-access container
+
+# CREATING API MANAGEMENT INSTANCE
+az apim create \
+    -n $APIM \
+    -g $RG \
+    -l $LOCATION \
+    --publisher-email <your-administrative-email-here> \
+    --publisher-name "<your-org-name-here>" \
+    --sku-name Developer \
+    --virtual-network External
+
+# ENABLING DEV PORTAL
+# No cmdlet available to do it through CLI. It has to be done in Azure portal.
+# First, under "Portal overview" enable CORS.
+# Once you do, hit "Developer portal" option, available on top menu to perform customizations you might want.
+# Once you're done customizing it go back to Azure portal and click on "Publish website" button.
+# Dev portal is now ready to reflect API's additions we're going to make next.
+
+# 
+
+# CREATING PATIENTS API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id patient \
+    --display-name Patient \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/patient \
+    --path /patient \
+    --subscription-required false \
+    --description "Groups operations related to Patients in the system."
+    
+
+az apim api operation create \
+    --api-id patient \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get all patients" \
+    --method GET \
+    --description "Returns all the patients in the system." \
+    --url-template "/" \
+    --operation-id get-all-patients
+
+az apim api operation create \
+    --api-id patient \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get patient by id" \
+    --method GET \
+    --description "Returns data from a given patient by its Id." \
+    --url-template "/byid/{id}" \
+    --template-parameters name=id required=true type=string \
+    --operation-id get-patient-by-id
+
+az apim api operation create \
+    --api-id patient \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get patient by email" \
+    --method GET \
+    --description "Returns data from a given patient by its Email." \
+    --url-template "/byemail/{email}" \
+    --template-parameters name=email required=true type=string \
+    --operation-id get-patient-by-email
+
+az apim api operation create \
+    --api-id patient \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new patient" \
+    --method POST \
+    --description "Creates a new patient." \
+    --url-template "/" \
+    --operation-id create-new-patient
+
+# CREATING PHYSICIANS API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id physician \
+    --display-name Physician \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/physician \
+    --path /physician \
+    --subscription-required false \
+    --description "Groups operations related to Physicians in the system."
+    
+
+az apim api operation create \
+    --api-id physician \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get all physicians" \
+    --method GET \
+    --description "Returns all the physicians in the system." \
+    --url-template "/" \
+    --operation-id get-all-physicians
+
+az apim api operation create \
+    --api-id physician \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get physician by id" \
+    --method GET \
+    --description "Returns data from a given physician by its Id." \
+    --url-template "/byid/{id}" \
+    --template-parameters name=id required=true type=string \
+    --operation-id get-physician-by-id
+
+az apim api operation create \
+    --api-id physician \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get physician by email" \
+    --method GET \
+    --description "Returns data from a given physician by its Email." \
+    --url-template "/byemail/{email}" \
+    --template-parameters name=email required=true type=string \
+    --operation-id get-physician-by-email
+
+az apim api operation create \
+    --api-id physician \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new physician" \
+    --method POST \
+    --description "Creates a new physician." \
+    --url-template "/" \
+    --operation-id create-new-physician
+
+# CREATING STUDIES API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id study \
+    --display-name Study \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/study \
+    --path /study \
+    --subscription-required false \
+    --description "Groups operations related to Studies in the system."
+    
+
+az apim api operation create \
+    --api-id study \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get all studies" \
+    --method GET \
+    --description "Returns all the studies in the system." \
+    --url-template "/" \
+    --operation-id get-all-studies
+
+az apim api operation create \
+    --api-id study \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get study by id" \
+    --method GET \
+    --description "Returns data from a given study by its Id." \
+    --url-template "/byid/{id}" \
+    --template-parameters name=id required=true type=string \
+    --operation-id get-study-by-id
+
+az apim api operation create \
+    --api-id study \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new study" \
+    --method POST \
+    --description "Creates a new study." \
+    --url-template "/" \
+    --operation-id create-new-study
+
+# CREATING VISITS API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id visit \
+    --display-name Visit \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/visit \
+    --path /visit \
+    --subscription-required false \
+    --description "Groups operations related to Visits in the system."
+    
+
+az apim api operation create \
+    --api-id visit \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get all visits" \
+    --method GET \
+    --description "Returns all the visits in the system." \
+    --url-template "/" \
+    --operation-id get-all-visits
+
+az apim api operation create \
+    --api-id visit \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get visit by id" \
+    --method GET \
+    --description "Returns data from a given visit by its Id." \
+    --url-template "/byid/{id}" \
+    --template-parameters name=id required=true type=string \
+    --operation-id get-visit-by-id
+
+az apim api operation create \
+    --api-id visit \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new visit" \
+    --method POST \
+    --description "Creates a new visit." \
+    --url-template "/" \
+    --operation-id create-new-visit
+
+# CREATING FORMS LABELS API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id formlabel \
+    --display-name "Forms Label" \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/formlabel \
+    --path /formlabel \
+    --subscription-required false \
+    --description "Groups operations related to Forms Labels in the system."
+    
+
+az apim api operation create \
+    --api-id formlabel \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get all forms labels" \
+    --method GET \
+    --description "Returns all the forms labels in the system." \
+    --url-template "/" \
+    --operation-id get-all-formslabels
+
+az apim api operation create \
+    --api-id formlabel \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get form label by id" \
+    --method GET \
+    --description "Returns data from a given form label by its Id." \
+    --url-template "/byid/{id}" \
+    --template-parameters name=id required=true type=string \
+    --operation-id get-formlabel-by-id
+
+az apim api operation create \
+    --api-id formlabel \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new form label" \
+    --method POST \
+    --description "Creates a new form label." \
+    --url-template "/" \
+    --operation-id create-new-formlabel
+
+# CREATING TRIAL FORMS API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id trialform \
+    --display-name "Trial Form" \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/trialform \
+    --path /trialform \
+    --subscription-required false \
+    --description "Groups operations related to Trial Forms in the system."
+    
+
+az apim api operation create \
+    --api-id trialform \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get all trial forms" \
+    --method GET \
+    --description "Returns all the trial forms in the system." \
+    --url-template "/" \
+    --operation-id get-all-trialforms
+
+az apim api operation create \
+    --api-id trialform \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get trial form by id" \
+    --method GET \
+    --description "Returns data from a given trial form by its Id." \
+    --url-template "/byid/{id}" \
+    --template-parameters name=id required=true type=string \
+    --operation-id get-trialform-by-id
+
+az apim api operation create \
+    --api-id trialform \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new trial form" \
+    --method POST \
+    --description "Creates a new trial form." \
+    --url-template "/" \
+    --operation-id create-new-trialform
+
+# CREATING TRIAL COMPLETION FORMS API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id trialcompletionform \
+    --display-name "Trial Completion Form" \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/trialcompletionform \
+    --path /trialcompletionform \
+    --subscription-required false \
+    --description "Groups operations related to Trial Completion Forms in the system."
+    
+
+az apim api operation create \
+    --api-id trialcompletionform \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get all trial completion forms" \
+    --method GET \
+    --description "Returns all the trial completion forms in the system." \
+    --url-template "/" \
+    --operation-id get-all-trialcompletionforms
+
+az apim api operation create \
+    --api-id trialcompletionform \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get trial completion form by id" \
+    --method GET \
+    --description "Returns data from a given trial completion form by its Id." \
+    --url-template "/byid/{id}" \
+    --template-parameters name=id required=true type=string \
+    --operation-id get-trialcompletionform-by-id
+
+az apim api operation create \
+    --api-id trialcompletionform \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new trial completion form" \
+    --method POST \
+    --description "Creates a new trial completion form." \
+    --url-template "/" \
+    --operation-id create-new-trialcompletionform
+
+# CREATING BASELINE FORMS API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id baselineform \
+    --display-name "Baseline Form" \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/baselineform \
+    --path /baselineform \
+    --subscription-required false \
+    --description "Groups operations related to Baseline Forms in the system."
+    
+
+az apim api operation create \
+    --api-id baselineform \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get all baselineform forms" \
+    --method GET \
+    --description "Returns all the baselineform forms in the system." \
+    --url-template "/" \
+    --operation-id get-all-baselineforms
+
+az apim api operation create \
+    --api-id baselineform \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get baselineform form by id" \
+    --method GET \
+    --description "Returns data from a given baselineform form by its Id." \
+    --url-template "/byid/{id}" \
+    --template-parameters name=id required=true type=string \
+    --operation-id get-baselineform-by-id
+
+az apim api operation create \
+    --api-id baselineform \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new baselineform form" \
+    --method POST \
+    --description "Creates a new baselineform form." \
+    --url-template "/" \
+    --operation-id create-new-baselineform
+
+# CREATING BASELINE FORMS API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id upload \
+    --display-name "Upload" \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/upload \
+    --path /upload \
+    --subscription-required false \
+    --description "Groups operations related to upload of files in the system."
+
+az apim api operation create \
+    --api-id upload \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new upload" \
+    --method POST \
+    --description "Creates a new upload." \
+    --url-template "/upload" \
+    --operation-id create-new-upload
+
+# CREATING STUDY PER PHYSICIAN API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id studyperphysician \
+    --display-name "Study Per Physician" \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/studyperphysician \
+    --path /studyperphysician \
+    --subscription-required false \
+    --description "Groups operations related to Studies Per Physician in the system."
+
+az apim api operation create \
+    --api-id studyperphysician \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new study per physician" \
+    --method POST \
+    --description "Creates a new study per physician." \
+    --url-template "/" \
+    --operation-id create-new-studyperphysician
+
+# CREATING VISIT PER STUDY API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id visitperstudy \
+    --display-name "Visit Per Study" \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/visitperstudy \
+    --path /visitperstudy \
+    --subscription-required false \
+    --description "Groups operations related to Visit Per Study in the system."
+
+az apim api operation create \
+    --api-id visitperstudy \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new visit per study" \
+    --method POST \
+    --description "Creates a new visit per study." \
+    --url-template "/" \
+    --operation-id create-new-visitperstudy
+
+# CREATING VISIT PER STUDY API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id formlabelpervisit \
+    --display-name "Form Label Per Visit" \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/formlabelpervisit \
+    --path /formlabelpervisit \
+    --subscription-required false \
+    --description "Groups operations related to Form Label Per Visit in the system."
+
+az apim api operation create \
+    --api-id formlabelpervisit \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new form label per visit" \
+    --method POST \
+    --description "Creates a new form label per visit." \
+    --url-template "/" \
+    --operation-id create-new-formlabelpervisit
+
+# CREATING VISIT PER PATIENT API AND ITS OPERATIONS
+az apim api create \
+    -n $APIM \
+    --api-id visitperpatient \
+    --display-name "Visit Per Patient" \
+    -g $RG \
+    --service-url https://$WEBAPP.azurewebsites.net/api/v1/visitperpatient \
+    --path /visitperpatient \
+    --subscription-required false \
+    --description "Groups operations related to Visit per Patient in the system."
+
+az apim api operation create \
+    --api-id visitperpatient \
+    -g $RG \
+    -n $APIM \
+    --display-name "Create new visit per patient" \
+    --method POST \
+    --description "Creates a new visit per patient." \
+    --url-template "/" \
+    --operation-id create-new-visitperpatient
