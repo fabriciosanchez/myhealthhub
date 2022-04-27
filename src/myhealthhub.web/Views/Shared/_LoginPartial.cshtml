@@ -4,15 +4,30 @@
 <ul class="navbar-nav">
 @if (User.Identity?.IsAuthenticated == true)
 {
-        <span class="navbar-text text-dark">Hello @User.GetUserGraphGivenName()</span>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign out</a>
+        <div style="border-right: 1px solid black;">
+            <table style="border: 0px; padding: 0px; margin-right: 10px;">
+                <tr>
+                    <td>Hello, @User.GetUserGraphGivenName()</td>
+                </tr>
+                <tr>
+                    <td style="font-size: small;"><i>Role: @User.GetUserJobTitle()</i></td>
+                </tr>
+            </table>
+        </div>
+        
+        <li class="nav-item d-flex align-items-center">
+            <a class="btn btn-danger" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut" style="margin-left: 10px;">
+                Sign out 
+                <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i>
+            </a>
         </li>
 }
 else
 {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+            <a class="btn btn-outline-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">
+                Sign in
+            </a>
         </li>
 }
 </ul>

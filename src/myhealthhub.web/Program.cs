@@ -9,6 +9,8 @@ using myhealthhub.web.Services.Graph;
 using System.Net.Http.Headers;
 using System.Net;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using myhealthhub.web.Services.Core;
+using myhealthhub.web.Services.PatientRepository;
 
 var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
 
@@ -61,7 +63,8 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme).A
             catch (ServiceException ex)
             {
                 if (ex.IsMatch("ErrorItemNotFound") ||
-                    ex.IsMatch("ConsumerPhotoIsNotSupported"))
+                    ex.IsMatch("ConsumerPhotoIsNotSupported") ||
+                    ex.IsMatch("ImageNotFound"))
                 {
                     context.Principal.AddUserGraphPhoto(null);
                 }
@@ -101,6 +104,9 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme).A
     })
     .AddInMemoryTokenCaches();
 
+//Registering custom services
+builder.Services.AddScoped<Http>();
+builder.Services.AddScoped<PatientRepository>();
 
 builder.Services.AddControllersWithViews(options =>
 {

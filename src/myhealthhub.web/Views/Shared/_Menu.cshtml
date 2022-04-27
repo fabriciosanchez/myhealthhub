@@ -12,12 +12,23 @@
                 <li class="nav-item"><a class="nav-link me-lg-3" href="#about">About</a></li>
                 <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Features</a></li>
             </ul>
-            <a href="@Url.Action("Index","Dashboard")" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
-                <span class="d-flex align-items-center">
-                    <i class="bi-door-open-fill me-2"></i>
-                    <span class="small">Sign in</span>
-                </span>
-            </a>
+            @if(User.Identity?.IsAuthenticated == true)
+            {
+                <a href="@Url.Action("Index","Dashboard")" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
+                    <span class="d-flex align-items-center">
+                        <span class="small">Go to dashboard</span>
+                    </span>
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("Index","Dashboard")" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
+                    <span class="d-flex align-items-center">
+                        <i class="bi-door-open-fill me-2"></i>
+                        <span class="small">Sign in</span>
+                    </span>
+                </a>
+            }
         </div>
     </div>
 </nav>

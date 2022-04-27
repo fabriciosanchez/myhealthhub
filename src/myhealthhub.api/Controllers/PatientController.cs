@@ -24,6 +24,20 @@ namespace myhealthhub.api.Controllers
             return await _context.Patients.ToListAsync();
         }
 
+        [HttpGet("{internalid}")]
+        [Route("byinternalid/{internalid}")]
+        public async Task<ActionResult<Patient>> GetPatientByInternalId(string internalid)
+        {
+            var patient = await _context.Patients.Where(x => x.InternalId == internalid).FirstOrDefaultAsync();
+
+            if(patient == null)
+            {
+                return NotFound();
+            }
+
+            return patient;
+        }
+
         [HttpGet("{id}")]
         [Route("byid/{id}")]
         public async Task<ActionResult<Patient>> GetPatient(string id)

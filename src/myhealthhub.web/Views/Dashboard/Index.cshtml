@@ -1,5 +1,25 @@
+@using myhealthhub.web.Services.Graph
 @{
     ViewData["Title"] = "Dashboard";
+    var userName = User.GetUserGraphGivenName();
+    var jobTitle = User.GetUserJobTitle();
 }
 
-<h1>Dashboard</h1>
+@if(jobTitle.Equals("Physician"))
+{
+    <h2 style="margin-bottom: 20px;">Physician's dashboard</h2>
+
+    <partial name="_PhysicianDashboard" />
+}
+else if(jobTitle.Equals("Patient"))
+{
+    <h2 style="margin-bottom: 20px;">Patient's dashboard</h2>
+
+    <partial name="_PatientDashboard" />
+}
+else
+{
+    <h2 style="margin-bottom: 20px;">Staff's dashboard</h2>
+
+    <partial name="_StaffDashboard" />
+}

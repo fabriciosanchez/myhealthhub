@@ -1,0 +1,12 @@
+<fieldset id="fsPatient" class="fieldset">
+    <legend class="legend">Patient lookup</legend>
+    <form asp-action="GetPatientByInternalId" asp-controller="Patient" method="post" class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="form-group">
+            <input type="text" class="form-control" id="PatientInternalId" name="PatientInternalId" placeholder="Enter patient code">
+        </div>
+        <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-magnifying-glass"></i> 
+            Search
+        </button>
+    </form>        
+</fieldset>
