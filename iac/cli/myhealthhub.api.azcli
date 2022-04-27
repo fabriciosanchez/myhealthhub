@@ -170,6 +170,17 @@ az apim api create \
     --subscription-required false \
     --description "Groups operations related to Patients in the system."
     
+az apim api operation create \
+    --api-id patient \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get patient by internal id" \
+    --method GET \
+    --description "Returns data from a given patient by its internal Id." \
+    --url-template "/byinternalid/{internalid}" \
+    --template-parameters name=internalid required=true type=string \
+    --operation-id get-patient-by-internal-id
+
 
 az apim api operation create \
     --api-id patient \
