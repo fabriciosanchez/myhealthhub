@@ -18,7 +18,7 @@ namespace myhealthhub.web.Controllers
 
         public async Task<IActionResult> GetPatientByInternalId([FromForm]PatientByInternalIdViewModel patientForm)
         {
-            var patient = await _patient.GetPatientAsync(patientForm.PatientInternalId);
+            var patient = await _patient.GetPatientByInternalIdAsync(patientForm.PatientInternalId);
 
             if(patient != null)
             {

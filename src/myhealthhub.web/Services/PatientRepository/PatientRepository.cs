@@ -18,7 +18,7 @@ namespace myhealthhub.web.Services.PatientRepository
             _patientResource = _config.GetSection("MyHealthHubApi").GetSection("PatientResource").Value;
         }
 
-        public async Task<Patient> GetPatientAsync(string id)
+        public async Task<Patient> GetPatientByInternalIdAsync(string id)
         {
             try
             {
