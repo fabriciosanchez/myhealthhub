@@ -1,12 +1,32 @@
-<fieldset id="fsPatient" class="fieldset">
+@using myhealthhub.web.Services.Graph
+
+<!-- Patient lookup -->
+<fieldset id="fsPatient" class="fieldset" style="margin-bottom: 20px;">
     <legend class="legend">Patient lookup</legend>
-    <form asp-action="GetPatientByInternalId" asp-controller="Patient" method="post" class="row row-cols-lg-auto g-3 align-items-center">
+    <div class="row row-cols-lg-auto g-3 align-items-center">
         <div class="form-group">
-            <input type="text" class="form-control" id="PatientInternalId" name="PatientInternalId" placeholder="Enter patient code">
+            <input type="text" class="form-control" id="txtPatientInternalId" name="txtPatientInternalId" placeholder="Enter patient code">
         </div>
-        <button type="submit" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" id="btnSearchUser" name="btnSearchUser">
             <i class="fa-solid fa-magnifying-glass"></i> 
             Search
         </button>
-    </form>        
+        &nbsp;
+        <button type="button" class="btn btn-success" id="btnStartOver" name="btnStartOver">
+            <i class="fa-solid fa-arrows-rotate"></i>
+            Start over
+        </button>
+    </div>
+    <span class="error-response" id="errorResponseLabel"></span>        
+</fieldset>
+
+<!-- Studies Per Physician -->
+<input type="hidden" value="@User.GetUserGraphEmail()" id="txtUserEmail" name="txtUserEmail" />
+<fieldset id="fsStudies" class="fieldset" style="margin-bottom: 20px;">
+    <legend class="legend">Studies</legend>
+    <div class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="form-group">
+            <select class="form-select" id="slStudies" name="slStudies"></select>
+        </div>
+    </div>
 </fieldset>

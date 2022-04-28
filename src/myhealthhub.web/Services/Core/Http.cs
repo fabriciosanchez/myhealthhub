@@ -96,7 +96,35 @@ namespace myhealthhub.web.Services.Core
                 string bearerToken = await GetAuthToken();
                 
                 var client = new RestClient(baseUri);
-                var request = new RestRequest(resource + "/" + id, Method.GET, DataFormat.Json);
+                var request = new RestRequest(resource + "/byid/" + id, Method.GET, DataFormat.Json);
+                request.AddHeader("Authorization", $"Bearer {bearerToken}");
+                var response = await client.ExecuteAsync<T>(request, Method.GET);
+
+                if(!response.IsSuccessful)
+                {
+                    response.StatusCode = HttpStatusCode.BadRequest;
+                }
+                else
+                {
+                    response.StatusCode = HttpStatusCode.OK;
+                }
+
+                return response.Data;
+            }
+            catch (System.Exception)
+            {
+                return default(T);
+            }
+        }
+
+        public async Task<T> GetByEmail<T>(string resource, string email)
+        {
+            try
+            {
+                string bearerToken = await GetAuthToken();
+                
+                var client = new RestClient(baseUri);
+                var request = new RestRequest(resource + "/byemail/" + email, Method.GET, DataFormat.Json);
                 request.AddHeader("Authorization", $"Bearer {bearerToken}");
                 var response = await client.ExecuteAsync<T>(request, Method.GET);
 

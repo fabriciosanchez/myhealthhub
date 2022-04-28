@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using myhealthhub.web.Models.Patient;
 using myhealthhub.web.Services.PatientRepository;
 
 namespace myhealthhub.web.Controllers
@@ -8,7 +7,7 @@ namespace myhealthhub.web.Controllers
     {
         private IConfiguration _config;
 
-        private readonly PatientRepository _patient;
+        private PatientRepository _patient;
 
         public PatientController(IConfiguration config, PatientRepository patient)
         {
@@ -16,18 +15,18 @@ namespace myhealthhub.web.Controllers
             _patient = patient;
         }
 
-        public async Task<IActionResult> GetPatientByInternalId([FromForm]PatientByInternalIdViewModel patientForm)
+        [HttpPost]
+        public async Task<JsonResult> GetPatientByInternalId(string patientInternalId)
         {
-            var patient = await _patient.GetPatientByInternalIdAsync(patientForm.PatientInternalId);
+            var patient = await _patient.GetPatientByInternalIdAsync(patientInternalId);
 
-            if(patient != null)
+            if(patient.InternalId != null)
             {
-                return View(patient);
+                var returnedObj = Json(new { InternalId = patient.InternalId });
+                return returnedObj;
             }
 
-            TempData["Message"] = "Patient not found. Double check internal code.";
-            TempData["MessageType"] = "error";
-            return RedirectToAction("Index");
+            return Json(new { error = "Patient not found." });
         }
     }
 }

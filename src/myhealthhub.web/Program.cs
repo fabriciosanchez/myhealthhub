@@ -11,6 +11,7 @@ using System.Net;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using myhealthhub.web.Services.Core;
 using myhealthhub.web.Services.PatientRepository;
+using myhealthhub.web.Services.PhysicianRepository;
 
 var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
 
@@ -107,6 +108,7 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme).A
 //Registering custom services
 builder.Services.AddScoped<Http>();
 builder.Services.AddScoped<PatientRepository>();
+builder.Services.AddScoped<StudyRepository>();
 
 builder.Services.AddControllersWithViews(options =>
 {

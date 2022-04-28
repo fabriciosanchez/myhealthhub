@@ -28,3 +28,10 @@ body {
   font-weight: bold;
   padding: 0px;
 }
+
+.error-response {
+  color: red;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+}
