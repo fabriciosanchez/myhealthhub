@@ -1,0 +1,81 @@
+name: myhealthhub-dev-cicd-api
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/myhealthhub.api/**"
+      
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "src/myhealthhub.api/**"
+      
+  workflow_dispatch:
+  
+jobs:
+  build:
+
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.x
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: .\src\myhealthhub.api
+      
+    - name: Setup NuGet.exe for restore
+      uses: NuGet/setup-nuget@v1.0.5
+    - run: nuget restore .\src\myhealthhub.api\myhealthhub.api.csproj
+      
+    #substitute production appsettings entries to appsettings json file
+    - name: App Settings Variable Substitution
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: 'src/myhealthhub.api/appsettings.json'
+      env:
+        ConnectionStrings.DBConnection: ${{ secrets.DB_CONNECTION_STRING_DEV_PROD }}
+        ConnectionStrings.StorageAccount: ${{ secrets.STORAGE_CONNECTION_STRING_DEV_PROD }}
+        AzureAd.Instance: ${{ secrets.AZUREAD_INSTANCE }}
+        AzureAd.Domain: ${{ secrets.AZUREAD_DOMAIN }}
+        AzureAd.TenantId: ${{ secrets.AZUREAD_TENANTID }}
+        AzureAd.ClientId: ${{ secrets.AZUREAD_CLIENTID }}
+        
+    - name: Update database (EF migrations)
+      run: |
+        dotnet tool install --global dotnet-ef
+        dotnet tool restore
+        dotnet ef database update -c MyHealthHubContext -p .\src\myhealthhub.api\
+      env:
+        ASPNETCORE_ENVIRONMENT: Production
+      
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+      working-directory: .\src\myhealthhub.api
+      
+    - name: Publish
+      run: dotnet publish -c Release -o myhealthhub-dev-api
+      working-directory: .\src\myhealthhub.api
+      
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
+    
+    - name: Selecting the target Subscription
+      run: az account set -s "${{ secrets.SUBSCRIPTION_ID }}"
+      
+    - name: Updating Azure WebApp
+      uses: Azure/webapps-deploy@v2
+      with:
+        # Name of the Azure Web App
+        app-name: myhealthhubapi-dev-webapp
+        # Applies to Web App only: Path to package or folder. *.zip, *.war, *.jar or a folder to deploy
+        package: .\src\myhealthhub.api\myhealthhub-dev-api
