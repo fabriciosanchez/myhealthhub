@@ -85,6 +85,6 @@ jobs:
       uses: Azure/webapps-deploy@v2
       with:
         # Name of the Azure Web App
-        app-name: myhealthhubapi-dev-webapp-web
+        app-name: myhealthhub-dev-webapp-web
         # Applies to Web App only: Path to package or folder. *.zip, *.war, *.jar or a folder to deploy
         package: .\src\myhealthhub.web\myhealthhub-dev-web
