@@ -46,6 +46,25 @@ jobs:
         AzureAd.Domain: ${{ secrets.AZUREAD_DOMAIN }}
         AzureAd.TenantId: ${{ secrets.AZUREAD_TENANTID }}
         AzureAd.ClientId: ${{ secrets.AZUREAD_CLIENTID }}
+        AzureAd.ClientSecret: ${{ secrets.CLIENTSECRET }}
+        AzureAd.CallbackPath: ${{ secrets.CALLBACKPATH }}
+        AzureAd.AllowWebApiToBeAuthorizedByACL: ${{ secrets.ALLOWWEBAPITOBRAUTHORIZEDBYACL }}
+        AccessToken.TokenResource: ${{ secrets.TOKENRESOURCE }}
+        AccessToken.GrantType: ${{ secrets.GRANTTYPE }}
+        AccessToken.Resource: ${{ secrets.RESOURCE }}
+        MyHealthHubApi.BaseUrl: ${{ secrets.BASEURL }}
+        MyHealthHubApi.PatientResource: ${{ secrets.PATIENTRESOURCE }}
+        MyHealthHubApi.PhysicianResource: ${{ secrets.PHYSICIANRESOURCE }}
+        MyHealthHubApi.FormLabelResource: ${{ secrets.FORMLABEL }}
+        MyHealthHubApi.StudyResource: ${{ secrets.STUDYRESOURCE }}
+        MyHealthHubApi.VisitResource: ${{ secrets.VISITRESOURCE }}
+        MyHealthHubApi.TrialFormResource: ${{ secrets.TRIALFORMRESOURCE }}
+        MyHealthHubApi.TrialCompletionFormResource: ${{ secrets.TRIALCOMPLETIONFORMRESOURCE }}
+        MyHealthHubApi.BaselineFormResource: ${{ secrets.BASELINEFORMRESOURCE }}
+        MyHealthHubApi.FormLabelPerVisitResource: ${{ secrets.FORMLABELPERVISITRESOURCE }}
+        MyHealthHubApi.StudyPerPhysicianResource: ${{ secrets.STUDYPERPHYSICIANRESOURCE }}
+        MyHealthHubApi.VisitPerStudyResource: ${{ secrets.VISITPERSTUDYRESOURCE }}
+        MyHealthHubApi.VisitPerPatientResource: ${{ secrets.VISITPERPATIENTRESOURCE }}
       
     - name: Build
       run: dotnet build --no-restore --configuration Release
@@ -57,7 +76,7 @@ jobs:
       
     - uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
+        creds: ${{ secrets.AZURE_CREDENTIALS_DEV_WEB }}
     
     - name: Selecting the target Subscription
       run: az account set -s "${{ secrets.SUBSCRIPTION_ID }}"
@@ -66,6 +85,6 @@ jobs:
       uses: Azure/webapps-deploy@v2
       with:
         # Name of the Azure Web App
-        app-name: myhealthhubapi-dev-webapp
+        app-name: myhealthhubapi-dev-webapp-web
         # Applies to Web App only: Path to package or folder. *.zip, *.war, *.jar or a folder to deploy
-        package: .\src\myhealthhub.api\myhealthhub-dev-api
+        package: .\src\myhealthhub.web\myhealthhub-dev-web
