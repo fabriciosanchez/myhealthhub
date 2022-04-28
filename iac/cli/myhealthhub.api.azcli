@@ -2,10 +2,11 @@
 
 # GLOBAL VARIABLES
 SUBSCRIPTION="<your-subscription-id-here>"
-RG="<your-resource-group-name>"
-LOCATION="eastus"
+RG="<your-resource-group>"
+LOCATION="<your-azure-region>"
 APPSERVICEPLAN="<your-app-service-plan-name-here>"
 WEBAPP="<your-webapp-name>"
+WEBAPPFRONT="<your-webapp-front-name>"
 SQLSERVER="<your-sql-server-name-here>"
 SQLDB="<your-sql-db-name-here>"
 STORAGE="<your-storage-account-name>"
@@ -41,6 +42,13 @@ az webapp create \
     -p $APPSERVICEPLAN \
     --runtime "DOTNET|6.0"
 
+# Creates the web app to host the frontwend
+az webapp create \
+    -n $WEBAPPFRONT \
+    -g $RG \
+    -p $APPSERVICEPLAN \
+    --runtime "DOTNET|6.0"
+
 # CREATING AN INSTANCE OF APPLICATION INSIGHTS FOR THE API
 
 # application-insights CLI is still in preview and should be added separatelly through the command below.
@@ -51,6 +59,14 @@ az webapp create \
 # Creates a new app insights component
 az monitor app-insights component create \
     --app $WEBAPP \
+    --resource-group $RG \
+    --location $LOCATION \
+    --kind web \
+    --application-type web
+
+# Creates a new app insights instance for the frontend
+az monitor app-insights component create \
+    --app $WEBAPPFRONT \
     --resource-group $RG \
     --location $LOCATION \
     --kind web \
@@ -87,7 +103,7 @@ az sql db create \
     -s $SQLSERVER \
     --service-objective S0
 
-# CREATING ENVIRONMENT VARIABLES FOR THE WEBAPP
+# CREATING ENVIRONMENT VARIABLES FOR THE WEBAPP API
 az webapp config appsettings set \
     -g $RG \
     -n $WEBAPP \
@@ -117,12 +133,128 @@ az webapp config appsettings set \
     -g $RG \
     -n $WEBAPP \
     --settings ConnectionStrings:StorageAccount=<your-storage-account-connection-string>
-# CREATING DATABASE CONNECTION STRING
+
 az webapp config connection-string set \
     --connection-string-type SQLAzure \
     --name $WEBAPP \
     -g $RG \
     --settings ConnectionStrings:DBConnection='<your-sqlserver-info-here>;Database=<your-database-name>;User Id=<your-database-username>;Password=<your-database-password>;MultipleActiveResultSets=True'
+
+# CREATING ENVIRONMENT VARIABLES FOR THE WEBAPP FRONTEND
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings AzureAd:Instance=https://login.microsoftonline.com/
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings AzureAd:Domain=<your-tenant-domain>
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings AzureAd:TenantId=<your-tenant-id>
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings AzureAd:ClientId=<your-client(app)-id>
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings AzureAd:ClientSecret=<your-app-client-secret>
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings AzureAd:CallbackPath=/signin-oidc
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings AzureAd:AllowWebApiToBeAuthorizedByACL=true
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings AccessToken:TokenResource=https://login.microsoftonline.com/<your-tenant-id>/oauth2/token
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings AccessToken:GrantType=client_credentials
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings AccessToken:Resource=api://<your-api-scope-resource-guid>
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:BaseUrl=https://<your-apim-endpoint>
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:PatientResource=patient
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:PhysicianResource=physician
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:FormLabelResource=formlabel
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:StudyResource=study
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:VisitResource=visit
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:TrialFormResource=trialform
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:TrialCompletionFormResource=trialcompletionform
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:BaselineFormResource=baselineform
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:FormLabelPerVisitResource=formlabelpervisit
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:StudyPerPhysicianResource=studyperphysician
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:VisitPerStudyResource=visitperstudy
+
+az webapp config appsettings set \
+    -g $RG \
+    -n $WEBAPPFRONT \
+    --settings MyHealthHubApi:VisitPerPatientResource=visitperpatient
 
 # CREATING STORAGE ACCOUNT AND CONTAINER FOR UPLOADS
 az storage account create \
@@ -156,8 +288,6 @@ az apim create \
 # Once you do, hit "Developer portal" option, available on top menu to perform customizations you might want.
 # Once you're done customizing it go back to Azure portal and click on "Publish website" button.
 # Dev portal is now ready to reflect API's additions we're going to make next.
-
-# 
 
 # CREATING PATIENTS API AND ITS OPERATIONS
 az apim api create \
@@ -418,6 +548,17 @@ az apim api operation create \
     --url-template "/byid/{id}" \
     --template-parameters name=id required=true type=string \
     --operation-id get-formlabel-by-id
+
+az apim api operation create \
+    --api-id formlabel \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get form labels by visit" \
+    --method GET \
+    --description "Returns all forms tied to a given visit Id." \
+    --url-template "/byvisitid/{visitid}" \
+    --template-parameters name=visitid required=true type=string \
+    --operation-id get-formlabel-by-visit-id
 
 az apim api operation create \
     --api-id formlabel \
