@@ -321,6 +321,17 @@ az apim api operation create \
     --url-template "/" \
     --operation-id create-new-study
 
+az apim api operation create \
+    --api-id study \
+    -g $RG \
+    -n $APIM \
+    --display-name "Get studies per physician" \
+    --method GET \
+    --description "Returns studies tied to a physician." \
+    --url-template "/byemail/{physicianemail}" \
+    --template-parameters name=physicianemail required=true type=string \
+    --operation-id get-studies-per-physician-email
+
 # CREATING VISITS API AND ITS OPERATIONS
 az apim api create \
     -n $APIM \
