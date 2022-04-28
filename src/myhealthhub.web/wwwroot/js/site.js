@@ -6,6 +6,8 @@ $(function () {
     // Global
     hideElement("fsStudies"); //hides fieldset studies by default
     hideElement("btnStartOver"); //hides button Start Over by default
+    hideElement("slVisits"); //hides select Visits
+    hideElement("slForms"); //hides select Forms
     loadSelectStudies(); //loads studies for current user
 
     // User lookup fieldset behavior
@@ -50,8 +52,11 @@ $(function () {
         refreshPage();
     });
 
-    // Behavior for Studies Per Physician
-    
+    // Behavior for Studies and Forms Per Physician
+    $("#slStudies").on("change", function() {
+        loadSelectVisits();
+        showElement("slVisits");
+    })
 
     // Helper functions
     function showElement(elementId)
@@ -69,6 +74,11 @@ $(function () {
         location.reload();
     }
 
+    function resetSelect(elementId)
+    {
+        $(`#${elementId}`).prop('selectedIndex', 0);
+    }
+
     function loadSelectStudies() {
         $.ajax({
             type: "GET",
@@ -77,9 +87,39 @@ $(function () {
                 "physicianEmail": $("#txtUserEmail").val()
              },
             success: function(response) {
-                alert(response);
+                for(i = 0; i < response.length; i++) {
+                    $("#slStudies").append(`<option value='${response[i].id}'>${response[i].name}</option>`)
+                }
+            },
+            failure: function(response) {
+                $("#errorResponseLabel").text("Error performing HTTP call. Try again later.");
+            },
+            error: function(response) {
+                $("#errorResponseLabel").text("Error performing HTTP call. Try again later.");
             }
         });
-        
     }
+    
+        function loadSelectVisits() {
+            $.ajax({
+                type: "GET",
+                url: "/Visit/GetVisitsPerSelectedStudy",
+                data: {
+                    "studyId": $("#slStudies option:selected").val()
+                },
+                success: function(response) {
+                    let selectOtions = '<option selected>-- VISIT TYPES --</option>';
+                    for(i = 0; i < response.length; i++) {
+                        selectOtions += `<option value='${response[i].id}'>${response[i].name}</option>`;
+                    }
+                    $("#slVisits").html(selectOtions);
+                },
+                failure: function(response) {
+                    $("#errorResponseLabel").text("Error performing HTTP call. Try again later.");
+                },
+                error: function(response) {
+                    $("#errorResponseLabel").text("Error performing HTTP call. Try again later.");
+                }
+            });
+        }
 });

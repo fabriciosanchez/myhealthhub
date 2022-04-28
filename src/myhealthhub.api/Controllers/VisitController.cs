@@ -39,6 +39,26 @@ namespace myhealthhub.api.Controllers
             return visit;
         }
 
+        [HttpGet("{studyid}")]
+        [Route("bystudyid/{studyid}")]
+        public async Task<ActionResult<IEnumerable<Visit>>> GetVisitsPerStudyId(string studyid)
+        {
+            var visits = await (from v in _context.Visits
+                                join vps in _context.StudiesPerVisits on v.Id equals vps.VisitId
+                                join s in _context.Studies on vps.StudyId equals s.Id
+                                where s.Id == Guid.Parse(studyid)
+                                select v).ToListAsync();
+
+            if(visits != null)
+            {
+                return visits;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<Visit>> PostVisit(Visit visit)
         {

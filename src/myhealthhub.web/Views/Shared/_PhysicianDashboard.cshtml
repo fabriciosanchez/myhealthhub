@@ -3,6 +3,10 @@
 <!-- Patient lookup -->
 <fieldset id="fsPatient" class="fieldset" style="margin-bottom: 20px;">
     <legend class="legend">Patient lookup</legend>
+    <p>
+        <i class="fa-solid fa-circle-info"></i> 
+        To start, type in the internal patient's code and then hit "Search". If there is no match in the system, you should report it to your provider.
+    </p>
     <div class="row row-cols-lg-auto g-3 align-items-center">
         <div class="form-group">
             <input type="text" class="form-control" id="txtPatientInternalId" name="txtPatientInternalId" placeholder="Enter patient code">
@@ -20,13 +24,28 @@
     <span class="error-response" id="errorResponseLabel"></span>        
 </fieldset>
 
-<!-- Studies Per Physician -->
+<!-- Studies Visits and Forms Per Physician -->
 <input type="hidden" value="@User.GetUserGraphEmail()" id="txtUserEmail" name="txtUserEmail" />
 <fieldset id="fsStudies" class="fieldset" style="margin-bottom: 20px;">
     <legend class="legend">Studies</legend>
+    <p>
+        <i class="fa-solid fa-circle-info"></i> 
+        Next, select the study for which you'd like to see Visit Types and Forms.
+    </p>
     <div class="row row-cols-lg-auto g-3 align-items-center">
         <div class="form-group">
-            <select class="form-select" id="slStudies" name="slStudies"></select>
+            <select class="form-select" id="slStudies" name="slStudies">
+                <option selected>-- STUDIES --</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select class="form-select" id="slVisits" name="slVisits">
+            </select>
+        </div>
+        <div class="form-group">
+            <select class="form-select" id="slForms" name="slForms">
+                <option selected>-- FORMS --</option>
+            </select>
         </div>
     </div>
 </fieldset>

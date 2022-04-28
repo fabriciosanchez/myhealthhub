@@ -117,6 +117,34 @@ namespace myhealthhub.web.Services.Core
             }
         }
 
+        public async Task<T> GetByStudyId<T>(string resource, string id)
+        {
+            try
+            {
+                string bearerToken = await GetAuthToken();
+                
+                var client = new RestClient(baseUri);
+                var request = new RestRequest(resource + "/bystudyid/" + id, Method.GET, DataFormat.Json);
+                request.AddHeader("Authorization", $"Bearer {bearerToken}");
+                var response = await client.ExecuteAsync<T>(request, Method.GET);
+
+                if(!response.IsSuccessful)
+                {
+                    response.StatusCode = HttpStatusCode.BadRequest;
+                }
+                else
+                {
+                    response.StatusCode = HttpStatusCode.OK;
+                }
+
+                return response.Data;
+            }
+            catch (System.Exception)
+            {
+                return default(T);
+            }
+        }
+
         public async Task<T> GetByEmail<T>(string resource, string email)
         {
             try
