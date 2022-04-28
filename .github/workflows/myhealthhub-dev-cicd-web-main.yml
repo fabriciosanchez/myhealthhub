@@ -1,17 +1,17 @@
-name: myhealthhub-dev-cicd-api
+name: myhealthhub-dev-cicd-web-main
 
 on:
   push:
     branches:
       - main
     paths:
-      - "src/myhealthhub.api/**"
+      - "src/myhealthhub.web/**"
       
   pull_request:
     branches:
       - main
     paths:
-      - "src/myhealthhub.api/**"
+      - "src/myhealthhub.web/**"
       
   workflow_dispatch:
   
@@ -30,40 +30,30 @@ jobs:
         
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: .\src\myhealthhub.api
+      working-directory: .\src\myhealthhub.web
       
     - name: Setup NuGet.exe for restore
       uses: NuGet/setup-nuget@v1.0.5
-    - run: nuget restore .\src\myhealthhub.api\myhealthhub.api.csproj
+    - run: nuget restore .\src\myhealthhub.web\myhealthhub.web.csproj
       
     #substitute production appsettings entries to appsettings json file
     - name: App Settings Variable Substitution
       uses: microsoft/variable-substitution@v1
       with:
-        files: 'src/myhealthhub.api/appsettings.json'
+        files: 'src/myhealthhub.web/appsettings.json'
       env:
-        ConnectionStrings.DBConnection: ${{ secrets.DB_CONNECTION_STRING_DEV_PROD }}
-        ConnectionStrings.StorageAccount: ${{ secrets.STORAGE_CONNECTION_STRING_DEV_PROD }}
         AzureAd.Instance: ${{ secrets.AZUREAD_INSTANCE }}
         AzureAd.Domain: ${{ secrets.AZUREAD_DOMAIN }}
         AzureAd.TenantId: ${{ secrets.AZUREAD_TENANTID }}
         AzureAd.ClientId: ${{ secrets.AZUREAD_CLIENTID }}
-        
-    - name: Update database (EF migrations)
-      run: |
-        dotnet tool install --global dotnet-ef
-        dotnet tool restore
-        dotnet ef database update -c MyHealthHubContext -p .\src\myhealthhub.api\
-      env:
-        ASPNETCORE_ENVIRONMENT: Production
       
     - name: Build
       run: dotnet build --no-restore --configuration Release
-      working-directory: .\src\myhealthhub.api
+      working-directory: .\src\myhealthhub.web
       
     - name: Publish
-      run: dotnet publish -c Release -o myhealthhub-dev-api
-      working-directory: .\src\myhealthhub.api
+      run: dotnet publish -c Release -o myhealthhub-dev-web
+      working-directory: .\src\myhealthhub.web
       
     - uses: azure/login@v1
       with:
