@@ -13,6 +13,7 @@ using myhealthhub.web.Services.Core;
 using myhealthhub.web.Services.PatientRepository;
 using myhealthhub.web.Services.PhysicianRepository;
 using myhealthhub.web.Services.VisitRepository;
+using myhealthhub.web.Services.FormLabelRepository;
 
 var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
 
@@ -111,6 +112,7 @@ builder.Services.AddScoped<Http>();
 builder.Services.AddScoped<PatientRepository>();
 builder.Services.AddScoped<StudyRepository>();
 builder.Services.AddScoped<VisitRepository>();
+builder.Services.AddScoped<FormLabelRepository>();
 
 builder.Services.AddControllersWithViews(options =>
 {

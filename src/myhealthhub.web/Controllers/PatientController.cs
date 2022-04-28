@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using myhealthhub.web.Services.PatientRepository;
 
 namespace myhealthhub.web.Controllers
 {
+    [Authorize]
     public class PatientController : Controller
     {
         private IConfiguration _config;

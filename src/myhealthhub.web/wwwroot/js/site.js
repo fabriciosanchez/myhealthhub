@@ -5,9 +5,11 @@ $(function () {
 
     // Global
     hideElement("fsStudies"); //hides fieldset studies by default
+    hideElement("fsFormsTable"); //hides fieldset dynamic table forms
     hideElement("btnStartOver"); //hides button Start Over by default
     hideElement("slVisits"); //hides select Visits
     hideElement("slForms"); //hides select Forms
+    hideElement("btnListForms"); //hides button list forms
     loadSelectStudies(); //loads studies for current user
 
     // User lookup fieldset behavior
@@ -56,6 +58,15 @@ $(function () {
     $("#slStudies").on("change", function() {
         loadSelectVisits();
         showElement("slVisits");
+    })
+
+    $("#slVisits").on("change", function() {
+        showElement("btnListForms");
+    })
+
+    $("#btnListForms").click(function () {
+        loadFormsTable();
+        showElement("fsFormsTable");
     })
 
     // Helper functions
@@ -113,6 +124,72 @@ $(function () {
                         selectOtions += `<option value='${response[i].id}'>${response[i].name}</option>`;
                     }
                     $("#slVisits").html(selectOtions);
+                },
+                failure: function(response) {
+                    $("#errorResponseLabel").text("Error performing HTTP call. Try again later.");
+                },
+                error: function(response) {
+                    $("#errorResponseLabel").text("Error performing HTTP call. Try again later.");
+                }
+            });
+        }
+
+        function loadFormsTable() {
+            $.ajax({
+                type: "GET",
+                url: "/FormLabel/GetFormLabelsPerSelectedVisit",
+                data: {
+                    "visitId": $("#slVisits option:selected").val()
+                },
+                success: function(response) {
+                    let studiesSelection = $("#slStudies option:selected").val();
+                    let visitsSelection = $("#slVisits option:selected").val();
+                    let tableDynamicContent = "";
+                    let formDescription = "";
+                    let status = "";
+                    let urlForm = "";
+                    
+                    if(studiesSelection != "-- STUDIES --" && visitsSelection != "-- VISIT TYPES --")
+                    {
+                        for(i = 0; i < response.length; i++) {
+                            if(response[i].description === "") {
+                                description = "Description unavailable.";
+                            }
+                            else {
+                                description = response[i].description;
+                            }
+
+                            if(response[i].statusFilling === false) {
+                                status = `<span class="badge bg-danger">Not filled</span>`;
+                            }
+                            else {
+                                status = `<span class="badge bg-success">Filled</span>`;
+                            }
+
+                            if(response[i].formUrlRoute === "") {
+                                urlForm = "#";
+                            }
+                            else {
+                                urlForm = `${response[i].formUrlRoute}/?pid=${$("#txtPatientInternalId").val()}&phe=${$("#txtUserEmail").val()}&vid=${$("#slVisits option:selected").val()}&flid=${response[i].id}`;
+                            }
+
+                            tableDynamicContent += "<tr>";
+                            tableDynamicContent += "<td>";
+                            tableDynamicContent += `${response[i].name}`;
+                            tableDynamicContent += "</td>"
+                            tableDynamicContent += "<td>";
+                            tableDynamicContent += `${description}`;
+                            tableDynamicContent += "</td>";
+                            tableDynamicContent += "<td>";
+                            tableDynamicContent += `${status}`;
+                            tableDynamicContent += "</td>";
+                            tableDynamicContent += "<td>";
+                            tableDynamicContent += `<a href="${urlForm}" class="btn btn-success btn-sm"><i class="fa-solid fa-file-import"></i> Fill</a>`;
+                            tableDynamicContent += "</td>";
+                            tableDynamicContent += "</tr>";
+                        }
+                        $('#tbFormsList tbody').html(tableDynamicContent);
+                    }
                 },
                 failure: function(response) {
                     $("#errorResponseLabel").text("Error performing HTTP call. Try again later.");

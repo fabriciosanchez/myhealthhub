@@ -39,6 +39,26 @@ namespace myhealthhub.api.Controllers
             return formLabel;
         }
 
+        [HttpGet("{visitid}")]
+        [Route("byvisitid/{visitid}")]
+        public async Task<ActionResult<IEnumerable<FormLabel>>> GetFormLabelsPerVisitId(string visitid)
+        {
+            var formLabels = await (from fl in _context.FormsLabels
+                                join flpv in _context.FormLabelsPerVisits on fl.Id equals flpv.FormLabelId
+                                join v in _context.Visits on flpv.VisitId equals v.Id
+                                where v.Id == Guid.Parse(visitid)
+                                select fl).ToListAsync();
+
+            if(formLabels != null)
+            {
+                return formLabels;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<FormLabel>> PostFormLabel(FormLabel formLabel)
         {

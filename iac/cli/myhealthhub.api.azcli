@@ -377,14 +377,14 @@ az apim api operation create \
 
 az apim api operation create \
     --api-id visit \
-    -g Demo-MyHealthHub \
-    -n myhealthhub-dev-apim \
+    -g $RG \
+    -n $APIM \
     --display-name "Get visits per study" \
     --method GET \
     --description "Returns all visits tied to a given study by study Id." \
     --url-template "/bystudyid/{studyid}" \
     --template-parameters name=studyid required=true type=string \
-    --operation-id get-visit-by-id
+    --operation-id get-visits-by-studyid
 
 # CREATING FORMS LABELS API AND ITS OPERATIONS
 az apim api create \

@@ -42,10 +42,35 @@
             <select class="form-select" id="slVisits" name="slVisits">
             </select>
         </div>
-        <div class="form-group">
+        @* <div class="form-group">
             <select class="form-select" id="slForms" name="slForms">
                 <option selected>-- FORMS --</option>
             </select>
-        </div>
+        </div> *@
+        <button type="button" class="btn btn-success" id="btnListForms" name="btnListForms">
+            <i class="fa-solid fa-play"></i>
+            List forms
+        </button>
     </div>
+</fieldset>
+
+<!-- Dynamic forms list -->
+<fieldset class="fieldset" id="fsFormsTable" name="fsFormsTable">
+    <legend class="legend">Forms available</legend>
+    <p>
+        <i class="fa-solid fa-circle-info"></i>
+        Below you can see the forms available based on previou selection.
+    </p>
+    <table class="table" id="tbFormsList" name="tbFormsList">
+        <thead>
+            <tr>
+                <th scope="col">Form name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>            
+        </tbody>
+    </table>
 </fieldset>

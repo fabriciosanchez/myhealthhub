@@ -25,7 +25,10 @@
                         @if (User.Identity?.IsAuthenticated == true) 
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Dashboard" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Dashboard" asp-action="Index">
+                                    <i class="fa-solid fa-arrows-rotate"></i> 
+                                    Start over
+                                </a>
                             </li>
                         }
                     </ul>

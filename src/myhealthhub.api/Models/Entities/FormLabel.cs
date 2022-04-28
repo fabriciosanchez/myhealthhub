@@ -13,6 +13,10 @@ namespace myhealthhub.api.Models.Entities
 
         public string? Description { get; set; }
 
+        public bool StatusFilling { get; set; }
+
+        public string FormUrlRoute { get; set; }
+
         public List<FormLabelPerVisit>? FormsLabelsPerVisits { get; set; }
 
         public List<TrialCompletionForm>? TrialCompletionForms { get; set; }

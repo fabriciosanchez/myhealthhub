@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using myhealthhub.web.Services.PhysicianRepository;
 using myhealthhub.web.Services.VisitRepository;
 
 namespace myhealthhub.web.Controllers
 {
+    [Authorize]
     public class VisitController : Controller
     {
         private IConfiguration _config;
