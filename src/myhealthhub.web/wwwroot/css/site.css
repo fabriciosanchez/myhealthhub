@@ -32,6 +32,6 @@ body {
 .error-response {
   color: red;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   text-align: left;
 }

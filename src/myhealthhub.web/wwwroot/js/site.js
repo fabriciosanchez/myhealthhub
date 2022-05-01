@@ -199,4 +199,41 @@ $(function () {
                 }
             });
         }
+
+        ///////////////////////////
+        //JQuery Validator forms //
+        ///////////////////////////
+
+        // Baseline form
+        $("#frmBaseline").validate({
+            errorClass: "error-response",
+            rules: {
+                SiteName: "required",
+                DateTimeBaseline: "required",
+                SiteId: "required",
+                SubjectId: "required",
+                Sex: "required",
+                AgeConsent: {
+                    required: true,
+                    number: true
+                },
+                Ethinicity: "required",
+                Weight: "required",
+                Height: "required"
+            },
+            messages: {
+                SiteName: "Please, specify the site name.",
+                DateTimeBaseline: "Please, inform baseline's date",
+                SiteId: "Please, specify site ID",
+                SubjectId: "Please, inform the subject ID",
+                Sex: "Please, inform sex at birth",
+                AgeConsent: {
+                    required: "You must inform the age",
+                    number: "Age must be a number"
+                },
+                Ethinicity: "Please, inform ethinicity",
+                Weight: "Weight must be informed",
+                Height: "Height must be informed"
+            }
+        });
 });
