@@ -219,7 +219,20 @@ $(function () {
                 },
                 Ethinicity: "required",
                 Weight: "required",
-                Height: "required"
+                Height: "required",
+                BloodPressure: "required",
+                WorkSituation: "required",
+                PainPreventToWork: "required",
+                DaysMissedDuePain: {
+                    required: true,
+                    number: true
+                },
+                ImpactPainInLife: "required",
+                ExerciseFrequence: "required",
+                InsuranceSituation: "required",
+                WorkCompensation: "required",
+                ActiveLitigation: "required",
+                SmokerStatus: "required"
             },
             messages: {
                 SiteName: "Please, specify the site name.",
@@ -233,7 +246,20 @@ $(function () {
                 },
                 Ethinicity: "Please, inform ethinicity",
                 Weight: "Weight must be informed",
-                Height: "Height must be informed"
+                Height: "Height must be informed",
+                BloodPressure: "Blood pressure is required",
+                WorkSituation: "Select the work situation",
+                PainPreventToWork: "This information is required",
+                DaysMissedDuePain: {
+                    required: "Information required",
+                    number: "Provide a number"
+                },
+                ImpactPainInLife: "Select an option",
+                ExerciseFrequence: "Select an option",
+                InsuranceSituation: "Select an option",
+                WorkCompensation: "Select an option",
+                ActiveLitigation: "Select an option",
+                SmokerStatus: "Select an option"
             }
         });
 });

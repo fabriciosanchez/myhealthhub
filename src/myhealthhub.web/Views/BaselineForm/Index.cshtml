@@ -115,6 +115,12 @@ else
                             <label for="Height">Height</label>
                         </div>
                     </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="BloodPressure" name="BloodPressure">
+                            <label for="BloodPressure">Blood Pressure</label>
+                        </div>
+                    </div>
                 </div>
                 <div class="row g-2" style="margin-top: 10px;">
                     <div class="col-md">
@@ -151,6 +157,122 @@ else
                     </div>
                 </div>
         </fieldset>
+        <!-- End section 2 -->
+
+        <!-- Section 3: Occupational and Lifestyle -->
+        <fieldset class="fieldset" id="fsOccupationalLifestyle" name="fsOccupationalLifestyle" style="margin-top: 20px;">
+            <legend class="legend">2. Occupational and Lifestyle Information</legend>
+            <div class="row g-2">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="WorkSituation" name="WorkSituation">
+                                <option value="" selected></option>
+                                <option value="Full Time">Full Time</option>
+                                <option value="Part Time">Part Time</option>
+                                <option value="Full-time family caregiver">Full-time family caregiver</option>
+                                <option value="Part Time Family Caregiver">Part Time Family Caregiver</option>
+                                <option value="Part Time Work and Part Time Family Caregiver">Part Time Work and Part Time Family Caregiver</option>
+                                <option value="Not Working">Not Working</option>
+                                <option value="Disabled">Disabled</option>
+                            </select>
+                            <label for="WorkSituation">Current Work Status</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="PainPreventToWork" name="PainPreventToWork">
+                                <option value="" selected></option>
+                                <option value="N/A">N/A</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                <option value="Reduced or Modified Duty">Reduced or Modified Duty</option>
+                        </select>
+                        <label for="PainPreventToWork">Pain causing the subject to stop working?</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="DaysMissedDuePain" name="DaysMissedDuePain">
+                        <label for="DaysMissedDuePain">Days missed last month due to pain?</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="ImpactPainInLife" name="ImpactPainInLife">
+                            <option value="" selected></option>
+                            <option value="None">None</option>
+                            <option value="Very Mild">Very Mild</option>
+                            <option value="Mild">Mild</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Severe">Severe</option>
+                            <option value="Very Severe">Very Severe</option>
+                        </select>
+                        <label for="ImpactPainInLife">Impact of pain have on subject's life</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="ExerciseFrequence" name="ExerciseFrequence">
+                            <option value="" selected></option>
+                            <option value="> 5 Days/Week">More than 5 Days/Week</option>
+                            <option value="3-5 Days/Week">3-5 Days/Week</option>
+                            <option value="1-2 Days/Week">1-2 Days/Week</option>
+                            <option value="< 1 Day/Week">Less then 1 Day/Week</option>
+                            <option value="None">None</option>
+                        </select>
+                        <label for="ExerciseFrequence">Frequency of subject's exercise</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="InsuranceSituation" name="InsuranceSituation">
+                            <option value="" selected></option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="Government">Government</option>
+                            <option value="Decline to answer">Decline to answer</option>
+                        </select>
+                        <label for="InsuranceSituation">Insurance Status</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="WorkCompensation" name="WorkCompensation">
+                            <option value="" selected></option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <label for="WorkCompensation">Is the subject on Worker's compensation?</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="ActiveLitigation" name="ActiveLitigation">
+                            <option value="" selected></option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <label for="ActiveLitigation">Litigation related to the pain?</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="SmokerStatus" name="SmokerStatus">
+                            <option value="" selected></option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                        <label for="SmokerStatus">Is the subject currently a smoker?</label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <!-- End section 3 -->
 
         <button type="submit" class="btn btn-success" style="margin-top: 20px;">
             <i class="fa-solid fa-floppy-disk"></i>
