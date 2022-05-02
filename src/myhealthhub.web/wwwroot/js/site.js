@@ -232,7 +232,10 @@ $(function () {
                 InsuranceSituation: "required",
                 WorkCompensation: "required",
                 ActiveLitigation: "required",
-                SmokerStatus: "required"
+                SmokerStatus: "required",
+                ChronicPainRecurrency: "required",
+                LevelPainZeroToTen: "required",
+                SubjectPrimaryChronicPainIndication: "required"
             },
             messages: {
                 SiteName: "Please, specify the site name.",
@@ -259,7 +262,10 @@ $(function () {
                 InsuranceSituation: "Select an option",
                 WorkCompensation: "Select an option",
                 ActiveLitigation: "Select an option",
-                SmokerStatus: "Select an option"
+                SmokerStatus: "Select an option",
+                ChronicPainRecurrency: "Select an option",
+                LevelPainZeroToTen: "Select an option",
+                SubjectPrimaryChronicPainIndication: "Select an option"
             }
         });
 });

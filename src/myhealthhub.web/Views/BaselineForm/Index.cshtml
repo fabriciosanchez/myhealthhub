@@ -274,6 +274,645 @@ else
         </fieldset>
         <!-- End section 3 -->
 
+        <!-- Section 4: Pain history -->
+        <fieldset class="fieldset" id="fsPainHistory" name="fsPainHistory" style="margin-top: 20px;">
+            <legend class="legend">3. Pain History</legend>
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="TimeChronicPainYears" name="TimeChronicPainYears">
+                        <label for="TimeChronicPainYears">Period chronic pain (in years)</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="TimeChronicPainMonths" name="TimeChronicPainMonths">
+                        <label for="TimeChronicPainMonths">Period chronic pain (in months)</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="ChronicPainRecurrency" name="ChronicPainRecurrency">
+                            <option value="" selected></option>
+                            <option value="1">Always present</option>
+                            <option value="0">In episodes</option>
+                        </select>
+                        <label for="ChronicPainRecurrency">When your chronic pain started?</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <span style="padding-top: 10px; padding-bottom: 10px">
+                    <strong>If in episdes only:</strong>
+                </span>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="ChronicPainEpisodeLasting" name="ChronicPainEpisodeLasting">
+                            <option value="" selected></option>
+                            <option value="Less than 1 hour">Less than 1 hour</option>
+                            <option value="1-3 hrs">1-3 hrs</option>
+                            <option value="3-6 hrs">3-6 hrs</option>
+                            <option value="6-24 hrs">6-24 hrs</option>
+                            <option value="1-3 days">1-3 days</option>
+                            <option value="3-7 days">3-7 days</option>
+                            <option value="More than 7 days">More than 7 days</option>
+                        </select>
+                        <label for="ChronicPainEpisodeLasting">How long did each episode last?</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="ChronicPainEpisodeIntensity" name="ChronicPainEpisodeIntensity">
+                            <option value="" selected></option>
+                            <option value="Decreased">Decreased</option>
+                            <option value="Stay the same">Stay the same</option>
+                            <option value="Increased">Increased</option>
+                        </select>
+                        <label for="ChronicPainEpisodeIntensity">Chronic pain instensity since started?</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="ChronicPainEpisodeFrequency" name="ChronicPainEpisodeFrequency">
+                            <option value="" selected></option>
+                            <option value="Never">Never</option>
+                            <option value="Some days">Some days</option>
+                            <option value="Half of days">Half of days</option>
+                            <option value="Most days">Most days</option>
+                            <option value="Every day">Every day</option>
+                            <option value="Several times per day">Several times per day</option>
+                        </select>
+                        <label for="ChronicPainEpisodeFrequency">How often did the episode occur?</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="ChronicPainEpisodeFrequencyComparisson" name="ChronicPainEpisodeFrequencyComparisson">
+                            <option value="" selected></option>
+                            <option value="More often">More often</option>
+                            <option value="Less often">Less often</option>
+                            <option value="About the same">About the same</option>
+                        </select>
+                        <label for="ChronicPainEpisodeFrequencyComparisson">Chronic pain now occur more often?</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="LevelPainZeroToTen" name="LevelPainZeroToTen">
+                            <option value="" selected></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <label for="LevelPainZeroToTen">What's your pain from 0 (no pain) to 10 (extremely bad)?</label>
+                    </div>
+                </div>
+
+                <div class="row g-2" style="margin-top: 5px;">
+                    <span style="padding-top: 10px; padding-bottom: 10px">
+                        <strong>Indicate the location of the pain when the subject started experiencing chronic pain:</strong>
+                    </span>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <img src="~/themes/v1/assets/img/front-man.png" style="width: 200px; height: 350px;" />
+                            <img src="~/themes/v1/assets/img/front-woman.png" style="width: 200px; height: 350px;" />
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFrontStatus" name="ChronicPainLocationFrontStatus" value="No pain at front side">
+                                <label class="form-check-label" for="ChronicPainLocationFrontStatus">No pain at front side</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront1" name="ChronicPainLocationFront1" value="1">
+                                <label class="form-check-label" for="ChronicPainLocationFront1">1</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront2" name="ChronicPainLocationFront2" value="2">
+                                <label class="form-check-label" for="ChronicPainLocationFront2">2</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront3" name="ChronicPainLocationFront3" value="3">
+                                <label class="form-check-label" for="ChronicPainLocationFront3">3</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront4" name="ChronicPainLocationFront4" value="4">
+                                <label class="form-check-label" for="ChronicPainLocationFront4">4</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront5" name="ChronicPainLocationFront5" value="5">
+                                <label class="form-check-label" for="ChronicPainLocationFront5">5</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront6" name="ChronicPainLocationFront6" value="6">
+                                <label class="form-check-label" for="ChronicPainLocationFront6">6</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront7" name="ChronicPainLocationFront7" value="7">
+                                <label class="form-check-label" for="ChronicPainLocationFront7">7</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront8" name="ChronicPainLocationFront8" value="8">
+                                <label class="form-check-label" for="ChronicPainLocationFront8">8</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront9" name="ChronicPainLocationFront9" value="9">
+                                <label class="form-check-label" for="ChronicPainLocationFront9">9</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront10" name="ChronicPainLocationFront10" value="10">
+                                <label class="form-check-label" for="ChronicPainLocationFront10">10</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront11" name="ChronicPainLocationFront11" value="11">
+                                <label class="form-check-label" for="ChronicPainLocationFront11">11</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront12" name="ChronicPainLocationFront12" value="12">
+                                <label class="form-check-label" for="ChronicPainLocationFront12">12</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront13" name="ChronicPainLocationFront13" value="13">
+                                <label class="form-check-label" for="ChronicPainLocationFront13">13</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront14" name="ChronicPainLocationFront14" value="14">
+                                <label class="form-check-label" for="ChronicPainLocationFront14">14</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront15" name="ChronicPainLocationFront15" value="15">
+                                <label class="form-check-label" for="ChronicPainLocationFront15">15</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront16" name="ChronicPainLocationFront16" value="16">
+                                <label class="form-check-label" for="ChronicPainLocationFront16">16</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront17" name="ChronicPainLocationFront17" value="17">
+                                <label class="form-check-label" for="ChronicPainLocationFront17">17</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront18" name="ChronicPainLocationFront18" value="18">
+                                <label class="form-check-label" for="ChronicPainLocationFront18">18</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront19" name="ChronicPainLocationFront19" value="19">
+                                <label class="form-check-label" for="ChronicPainLocationFront19">19</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront20" name="ChronicPainLocationFront20" value="20">
+                                <label class="form-check-label" for="ChronicPainLocationFront20">20</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront21" name="ChronicPainLocationFront21" value="21">
+                                <label class="form-check-label" for="ChronicPainLocationFront21">21</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront22" name="ChronicPainLocationFront22" value="22">
+                                <label class="form-check-label" for="ChronicPainLocationFront22">22</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront23" name="ChronicPainLocationFront23" value="23">
+                                <label class="form-check-label" for="ChronicPainLocationFront23">23</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront24" name="ChronicPainLocationFront24" value="24">
+                                <label class="form-check-label" for="ChronicPainLocationFront24">24</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-2" style="margin-top: 5px;">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <img src="~/themes/v1/assets/img/back-man.png" style="width: 200px; height: 350px;" />
+                            <img src="~/themes/v1/assets/img/back-woman.png" style="width: 200px; height: 350px;" />
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationBackStatus" name="ChronicPainLocationBackStatus" value="No pain at back side">
+                                <label class="form-check-label" for="ChronicPainLocationBackStatus">No pain at back side</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront25" name="ChronicPainLocationFront25" value="25">
+                                <label class="form-check-label" for="ChronicPainLocationFront25">25</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront26" name="ChronicPainLocationFront26" value="26">
+                                <label class="form-check-label" for="ChronicPainLocationFront26">26</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront27" name="ChronicPainLocationFront27" value="27">
+                                <label class="form-check-label" for="ChronicPainLocationFront27">27</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront28" name="ChronicPainLocationFront28" value="28">
+                                <label class="form-check-label" for="ChronicPainLocationFront28">28</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront29" name="ChronicPainLocationFront29" value="29">
+                                <label class="form-check-label" for="ChronicPainLocationFront29">29</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront30" name="ChronicPainLocationFront30" value="30">
+                                <label class="form-check-label" for="ChronicPainLocationFront30">30</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront31" name="ChronicPainLocationFront31" value="31">
+                                <label class="form-check-label" for="ChronicPainLocationFront31">31</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront32" name="ChronicPainLocationFront32" value="32">
+                                <label class="form-check-label" for="ChronicPainLocationFront32">32</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront33" name="ChronicPainLocationFront33" value="33">
+                                <label class="form-check-label" for="ChronicPainLocationFront33">33</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront34" name="ChronicPainLocationFront34" value="34">
+                                <label class="form-check-label" for="ChronicPainLocationFront34">34</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront35" name="ChronicPainLocationFront35" value="35">
+                                <label class="form-check-label" for="ChronicPainLocationFront35">35</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront36" name="ChronicPainLocationFront36" value="36">
+                                <label class="form-check-label" for="ChronicPainLocationFront36">36</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront37" name="ChronicPainLocationFront37" value="37">
+                                <label class="form-check-label" for="ChronicPainLocationFront37">37</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront38" name="ChronicPainLocationFront38" value="38">
+                                <label class="form-check-label" for="ChronicPainLocationFront38">38</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront39" name="ChronicPainLocationFront39" value="39">
+                                <label class="form-check-label" for="ChronicPainLocationFront39">39</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront40" name="ChronicPainLocationFront40" value="40">
+                                <label class="form-check-label" for="ChronicPainLocationFront16">40</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront41" name="ChronicPainLocationFront41" value="41">
+                                <label class="form-check-label" for="ChronicPainLocationFront41">41</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront42" name="ChronicPainLocationFront42" value="42">
+                                <label class="form-check-label" for="ChronicPainLocationFront42">42</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront43" name="ChronicPainLocationFront43" value="43">
+                                <label class="form-check-label" for="ChronicPainLocationFront43">43</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFront44" name="ChronicPainLocationFront44" value="44">
+                                <label class="form-check-label" for="ChronicPainLocationFront44">44</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>            
+        </fieldset>
+        <!-- End section 4 -->
+
+        <!-- Section 5: Pain Diagnosis -->
+        <fieldset class="fieldset" id="fsPainDiagnosis" name="fsPainDiagnosis" style="margin-top: 20px;">
+            <legend class="legend">4. Pain Diagnosis</legend>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <span style="padding-top: 10px; padding-bottom: 10px">
+                    <strong>What Pain Diagnosis does the subject have? (Check all that apply):</strong>
+                </span>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="ChronicPostOperativePainStatus" name="ChronicPostOperativePainStatus" value="true">
+                            <label class="form-check-label" for="ChronicPostOperativePainStatus">Chronic post-operative or post-procedural pain (not from back surgery)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="PostOperativePainTypeSurgery1" name="PostOperativePainTypeSurgery1">
+                        <label for="PostOperativePainTypeSurgery1">Type of Surgery</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="PostOperativePainTypeSurgeryYear1" name="PostOperativePainTypeSurgeryYear1">
+                        <label for="PostOperativePainTypeSurgeryYear1">Year</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="PostOperativePainTypeSurgery2" name="PostOperativePainTypeSurgery2">
+                        <label for="PostOperativePainTypeSurgery2">Type of Surgery</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="PostOperativePainTypeSurgeryYear2" name="PostOperativePainTypeSurgeryYear2">
+                        <label for="PostOperativePainTypeSurgeryYear2">Year</label>
+                    </div>
+                </div>
+            </div>
+
+             <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="PostOperativePainTypeSurgery3" name="PostOperativePainTypeSurgery3">
+                        <label for="PostOperativePainTypeSurgery3">Type of Surgery</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="PostOperativePainTypeSurgeryYear3" name="PostOperativePainTypeSurgeryYear3">
+                        <label for="PostOperativePainTypeSurgeryYear3">Year</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="PostOperativePainTypeSurgery4" name="PostOperativePainTypeSurgery4">
+                        <label for="PostOperativePainTypeSurgery4">Type of Surgery</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="PostOperativePainTypeSurgeryYear4" name="PostOperativePainTypeSurgeryYear4">
+                        <label for="PostOperativePainTypeSurgeryYear4">Year</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="PostOperativePainTypeSurgery5" name="PostOperativePainTypeSurgery5">
+                        <label for="PostOperativePainTypeSurgery5">Type of Surgery</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="PostOperativePainTypeSurgeryYear5" name="PostOperativePainTypeSurgeryYear5">
+                        <label for="PostOperativePainTypeSurgeryYear5">Year</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 15px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="FalledBackSurgerySyndromeStatus" name="FalledBackSurgerySyndromeStatus" value="true">
+                            <label class="form-check-label" for="FalledBackSurgerySyndromeStatus">Failed Back Surgery Syndrome: (list each type of surgery and corresponding levels separately)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="FalledBackSyndromeTypeSurgery1" name="FalledBackSyndromeTypeSurgery1">
+                        <label for="FalledBackSyndromeTypeSurgery1">Type of Surgery</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="FalledBackSyndromeTypeSurgeryLevel1" name="FalledBackSyndromeTypeSurgeryLevel1">
+                        <label for="FalledBackSyndromeTypeSurgeryLevel1">Level(s) - (i.e. T2-T3)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="FalledBackSyndromeTypeSurgery2" name="FalledBackSyndromeTypeSurgery2">
+                        <label for="FalledBackSyndromeTypeSurgery2">Type of Surgery</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="FalledBackSyndromeTypeSurgeryLevel2" name="FalledBackSyndromeTypeSurgeryLevel2">
+                        <label for="FalledBackSyndromeTypeSurgeryLevel2">Level(s) - (i.e. T2-T3)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="FalledBackSyndromeTypeSurgery3" name="FalledBackSyndromeTypeSurgery3">
+                        <label for="FalledBackSyndromeTypeSurgery3">Type of Surgery</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="FalledBackSyndromeTypeSurgeryLevel3" name="FalledBackSyndromeTypeSurgeryLevel3">
+                        <label for="FalledBackSyndromeTypeSurgeryLevel3">Level(s) - (i.e. T2-T3)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="FalledBackSyndromeTypeSurgery4" name="FalledBackSyndromeTypeSurgery4">
+                        <label for="FalledBackSyndromeTypeSurgery4">Type of Surgery</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="FalledBackSyndromeTypeSurgeryLevel4" name="FalledBackSyndromeTypeSurgeryLevel4">
+                        <label for="FalledBackSyndromeTypeSurgeryLevel4">Level(s) - (i.e. T2-T3)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="FalledBackSyndromeTypeSurgery5" name="FalledBackSyndromeTypeSurgery5">
+                        <label for="FalledBackSyndromeTypeSurgery5">Type of Surgery</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="FalledBackSyndromeTypeSurgeryLevel5" name="FalledBackSyndromeTypeSurgeryLevel5">
+                        <label for="FalledBackSyndromeTypeSurgeryLevel5">Level(s) - (i.e. T2-T3)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 15px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="BackPainStatus" name="BackPainStatus" value="true">
+                            <label class="form-check-label" for="BackPainStatus">Back Pain (no prior surgery)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="BackPainFBSSStatus" name="BackPainFBSSStatus" value="true">
+                            <label class="form-check-label" for="BackPainFBSSStatus">Back Pain (Not FBSS/New Pain Level)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="NeckUperLimbSchemiaStatus" name="NeckUperLimbSchemiaStatus" value="true">
+                            <label class="form-check-label" for="NeckUperLimbSchemiaStatus">Neck/Upper Limb Pain</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="CriticalLimbSchemiaStatus" name="CriticalLimbSchemiaStatus" value="true">
+                            <label class="form-check-label" for="CriticalLimbSchemiaStatus">Critical Limb Ischemia</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="VisceralPainStatus" name="VisceralPainStatus" value="true">
+                            <label class="form-check-label" for="VisceralPainStatus">Visceral Pain</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="AnginaStatus" name="AnginaStatus" value="true">
+                            <label class="form-check-label" for="AnginaStatus">Angina</label>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="row g-2" style="margin-top: 15px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="PeripheralNeuropathyStatus" name="PeripheralNeuropathyStatus">
+                            <option value="" selected></option>
+                            <option value="Diabetic">Diabetic</option>
+                            <option value="Chemotherapy">Chemotherapy</option>
+                            <option value="Not Otherwise Specified">Not Otherwise Specified</option>
+                        </select>
+                        <label for="PeripheralNeuropathyStatus">Peripheral Neuropathy (select one)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="CausalgiaMuscle" name="CausalgiaMuscle">
+                        <label for="CausalgiaMuscle">Causalgia [(Nerve Injured) CRPS Type II] Specify Nerve</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="SympatheticDystrophy" name="SympatheticDystrophy" value="true">
+                            <label class="form-check-label" for="SympatheticDystrophy">Reflex Sympathetic Dystrophy [(Complex regional pain syndrome type I) CRPS Type I]</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="OtherPainDiagnosis" name="OtherPainDiagnosis">
+                        <label for="OtherPainDiagnosis">Other, specify</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="PostAmputationStatus" name="PostAmputationStatus" value="true">
+                            <label class="form-check-label" for="PostAmputationStatus">Post-Amputation</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="SubjectPrimaryChronicPainIndication" name="SubjectPrimaryChronicPainIndication">
+                            <option value="" selected></option>
+                            <option value="Chronic Post-Operative Or Post-Procedural Pain">Chronic Post-Operative Or Post-Procedural Pain</option>
+                            <option value="Failed Back Surgery Syndrome - Fusion">Failed Back Surgery Syndrome - Fusion</option>
+                            <option value="Failed Back Surgery Syndrome - Non-Fusion">Failed Back Surgery Syndrome - Non-Fusion</option>
+                            <option value="Back Pain (No Prior Surgery)">Back Pain (No Prior Surgery)</option>
+                            <option value="Back Pain (Not FBSS/New Pain Level)">Back Pain (Not FBSS/New Pain Level)</option>
+                            <option value="Neck/Upper Limb Pain">Neck/Upper Limb Pain</option>
+                            <option value="Critical Limb Ischemia">Critical Limb Ischemia</option>
+                            <option value="Angina">Angina</option>
+                            <option value="Peripheral Neuropathy">Peripheral Neuropathy</option>
+                            <option value="Reflex Sympathetic Dystrophy (Complex Regional Pain Syn- drome Type I)">Reflex Sympathetic Dystrophy (Complex Regional Pain Syn- drome Type I)</option>
+                            <option value="Causalgia">Causalgia</option>
+                            <option value="Post-Amputation">Post-Amputation</option>
+                            <option value="Radiculopathy">Radiculopathy</option>
+                            <option value="Visceral Pain">Visceral Pain</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <label for="SubjectPrimaryChronicPainIndication">What is the subject's primary chronic pain indication for neuromodulation?</label>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+        <!-- End section 5 -->
+
         <button type="submit" class="btn btn-success" style="margin-top: 20px;">
             <i class="fa-solid fa-floppy-disk"></i>
             Save

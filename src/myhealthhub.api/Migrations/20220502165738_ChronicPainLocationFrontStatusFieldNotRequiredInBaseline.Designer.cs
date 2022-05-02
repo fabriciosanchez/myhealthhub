@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myhealthhub.api.Models;
 
@@ -11,9 +12,10 @@ using myhealthhub.api.Models;
 namespace myhealthhub.api.Migrations
 {
     [DbContext(typeof(MyHealthHubContext))]
-    partial class MyHealthHubContextModelSnapshot : ModelSnapshot
+    [Migration("20220502165738_ChronicPainLocationFrontStatusFieldNotRequiredInBaseline")]
+    partial class ChronicPainLocationFrontStatusFieldNotRequiredInBaseline
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,139 +72,140 @@ namespace myhealthhub.api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ChronicPainLocationBackStatus")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ChronicPainLocationFront1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront1")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront10")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront10")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront11")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront11")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront12")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront12")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront13")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront13")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront14")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront14")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront15")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront15")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront16")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront16")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront17")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront17")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront18")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront18")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront19")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront19")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront2")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront20")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront20")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront21")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront21")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront22")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront22")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront23")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront23")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront24")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront24")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront25")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront25")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront26")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront26")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront27")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront27")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront28")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront28")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront29")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront29")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront3")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront3")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront30")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront30")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront31")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront31")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront32")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront32")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront33")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront33")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront34")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront34")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront35")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront35")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront36")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront36")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront37")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront37")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront38")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront38")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront39")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront39")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront4")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront4")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront40")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront40")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront41")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront41")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront42")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront42")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront43")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront43")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront44")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront44")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront5")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront5")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront6")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront6")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront7")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront7")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront8")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront8")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("ChronicPainLocationFront9")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChronicPainLocationFront9")
+                        .HasColumnType("bit");
 
                     b.Property<string>("ChronicPainLocationFrontStatus")
                         .HasColumnType("nvarchar(max)");
@@ -234,8 +237,8 @@ namespace myhealthhub.api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FalledBackSurgerySyndromeStatus")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("FalledBackSurgerySyndromeStatus")
+                        .HasColumnType("bit");
 
                     b.Property<string>("FalledBackSyndromeTypeSurgery1")
                         .HasColumnType("nvarchar(max)");
@@ -328,8 +331,8 @@ namespace myhealthhub.api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PeripheralNeuropathyStatus")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("PeripheralNeuropathyStatus")
+                        .HasColumnType("bit");
 
                     b.Property<Guid>("PhysicianId")
                         .HasColumnType("uniqueidentifier");

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myhealthhub.api.Models;
 
@@ -11,9 +12,10 @@ using myhealthhub.api.Models;
 namespace myhealthhub.api.Migrations
 {
     [DbContext(typeof(MyHealthHubContext))]
-    partial class MyHealthHubContextModelSnapshot : ModelSnapshot
+    [Migration("20220502171539_ChronicPainLocationFrontAndBackNullable")]
+    partial class ChronicPainLocationFrontAndBackNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,8 +236,8 @@ namespace myhealthhub.api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FalledBackSurgerySyndromeStatus")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("FalledBackSurgerySyndromeStatus")
+                        .HasColumnType("bit");
 
                     b.Property<string>("FalledBackSyndromeTypeSurgery1")
                         .HasColumnType("nvarchar(max)");
@@ -328,8 +330,8 @@ namespace myhealthhub.api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PeripheralNeuropathyStatus")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("PeripheralNeuropathyStatus")
+                        .HasColumnType("bit");
 
                     b.Property<Guid>("PhysicianId")
                         .HasColumnType("uniqueidentifier");
