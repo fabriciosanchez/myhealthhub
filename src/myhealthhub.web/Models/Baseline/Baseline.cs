@@ -78,97 +78,97 @@ namespace myhealthhub.web.Models.Baseline
 
         public int LevelPainZeroToTen { get; set; }
 
-        public string ChronicPainLocationFrontStatus { get; set; }
+        public string? ChronicPainLocationFrontStatus { get; set; }
 
-        public bool ChronicPainLocationFront1 { get; set; }
+        public string? ChronicPainLocationFront1 { get; set; }
 
-        public bool ChronicPainLocationFront2 { get; set; }
+        public string? ChronicPainLocationFront2 { get; set; }
 
-        public bool ChronicPainLocationFront3 { get; set; }
+        public string? ChronicPainLocationFront3 { get; set; }
 
-        public bool ChronicPainLocationFront4 { get; set; }
+        public string? ChronicPainLocationFront4 { get; set; }
 
-        public bool ChronicPainLocationFront5 { get; set; }
+        public string? ChronicPainLocationFront5 { get; set; }
 
-        public bool ChronicPainLocationFront6 { get; set; }
+        public string? ChronicPainLocationFront6 { get; set; }
 
-        public bool ChronicPainLocationFront7 { get; set; }
+        public string? ChronicPainLocationFront7 { get; set; }
 
-        public bool ChronicPainLocationFront8 { get; set; }
+        public string? ChronicPainLocationFront8 { get; set; }
 
-        public bool ChronicPainLocationFront9 { get; set; }
+        public string? ChronicPainLocationFront9 { get; set; }
 
-        public bool ChronicPainLocationFront10 { get; set; }
+        public string? ChronicPainLocationFront10 { get; set; }
 
-        public bool ChronicPainLocationFront11 { get; set; }
+        public string? ChronicPainLocationFront11 { get; set; }
 
-        public bool ChronicPainLocationFront12 { get; set; }
+        public string? ChronicPainLocationFront12 { get; set; }
 
-        public bool ChronicPainLocationFront13 { get; set; }
+        public string? ChronicPainLocationFront13 { get; set; }
 
-        public bool ChronicPainLocationFront14 { get; set; }
+        public string? ChronicPainLocationFront14 { get; set; }
 
-        public bool ChronicPainLocationFront15 { get; set; }
+        public string? ChronicPainLocationFront15 { get; set; }
 
-        public bool ChronicPainLocationFront16 { get; set; }
+        public string? ChronicPainLocationFront16 { get; set; }
 
-        public bool ChronicPainLocationFront17 { get; set; }
+        public string? ChronicPainLocationFront17 { get; set; }
 
-        public bool ChronicPainLocationFront18 { get; set; }
+        public string? ChronicPainLocationFront18 { get; set; }
 
-        public bool ChronicPainLocationFront19 { get; set; }
+        public string? ChronicPainLocationFront19 { get; set; }
 
-        public bool ChronicPainLocationFront20 { get; set; }
+        public string? ChronicPainLocationFront20 { get; set; }
 
-        public bool ChronicPainLocationFront21 { get; set; }
+        public string? ChronicPainLocationFront21 { get; set; }
 
-        public bool ChronicPainLocationFront22 { get; set; }
+        public string? ChronicPainLocationFront22 { get; set; }
 
-        public bool ChronicPainLocationFront23 { get; set; }
+        public string? ChronicPainLocationFront23 { get; set; }
 
-        public bool ChronicPainLocationFront24 { get; set; }
+        public string? ChronicPainLocationFront24 { get; set; }
 
-        public string ChronicPainLocationBackStatus { get; set; }
+        public string? ChronicPainLocationBackStatus { get; set; }
 
-        public bool ChronicPainLocationFront25 { get; set; }
+        public string? ChronicPainLocationFront25 { get; set; }
 
-        public bool ChronicPainLocationFront26 { get; set; }
+        public string? ChronicPainLocationFront26 { get; set; }
 
-        public bool ChronicPainLocationFront27 { get; set; }
+        public string? ChronicPainLocationFront27 { get; set; }
 
-        public bool ChronicPainLocationFront28 { get; set; }
+        public string? ChronicPainLocationFront28 { get; set; }
 
-        public bool ChronicPainLocationFront29 { get; set; }
+        public string? ChronicPainLocationFront29 { get; set; }
 
-        public bool ChronicPainLocationFront30 { get; set; }
+        public string? ChronicPainLocationFront30 { get; set; }
 
-        public bool ChronicPainLocationFront31 { get; set; }
+        public string? ChronicPainLocationFront31 { get; set; }
 
-        public bool ChronicPainLocationFront32 { get; set; }
+        public string? ChronicPainLocationFront32 { get; set; }
 
-        public bool ChronicPainLocationFront33 { get; set; }
+        public string? ChronicPainLocationFront33 { get; set; }
 
-        public bool ChronicPainLocationFront34 { get; set; }
+        public string? ChronicPainLocationFront34 { get; set; }
 
-        public bool ChronicPainLocationFront35 { get; set; }
+        public string? ChronicPainLocationFront35 { get; set; }
 
-        public bool ChronicPainLocationFront36 { get; set; }
+        public string? ChronicPainLocationFront36 { get; set; }
 
-        public bool ChronicPainLocationFront37 { get; set; }
+        public string? ChronicPainLocationFront37 { get; set; }
 
-        public bool ChronicPainLocationFront38 { get; set; }
+        public string? ChronicPainLocationFront38 { get; set; }
 
-        public bool ChronicPainLocationFront39 { get; set; }
+        public string? ChronicPainLocationFront39 { get; set; }
 
-        public bool ChronicPainLocationFront40 { get; set; }
+        public string? ChronicPainLocationFront40 { get; set; }
 
-        public bool ChronicPainLocationFront41 { get; set; }
+        public string? ChronicPainLocationFront41 { get; set; }
 
-        public bool ChronicPainLocationFront42 { get; set; }
+        public string? ChronicPainLocationFront42 { get; set; }
 
-        public bool ChronicPainLocationFront43 { get; set; }
+        public string? ChronicPainLocationFront43 { get; set; }
 
-        public bool ChronicPainLocationFront44 { get; set; }
+        public string? ChronicPainLocationFront44 { get; set; }
 
         public bool ChronicPostOperativePainStatus { get; set; }
 
@@ -192,7 +192,7 @@ namespace myhealthhub.web.Models.Baseline
 
         public string? PostOperativePainTypeSurgeryYear5 { get; set; }
 
-        public bool FalledBackSurgerySyndromeStatus { get; set; }
+        public string? FalledBackSurgerySyndromeStatus { get; set; }
 
         public string? FalledBackSyndromeTypeSurgery1 { get; set; }
 
@@ -226,23 +226,19 @@ namespace myhealthhub.web.Models.Baseline
 
         public bool AnginaStatus { get; set; }
 
-        public bool PeripheralNeuropathyStatus { get; set; }
+        public string? PeripheralNeuropathyStatus { get; set; }
 
-        public bool DiabeticStatus { get; set; }
+        public string? SympatheticDystrophy { get; set; }
 
-        public bool ChemotherapyRelatedStatus { get; set; }
+        public string? CausalgiaMuscle { get; set; }
 
-        public bool ReflexSympatheticDystrophyStatus { get; set; }
+        public string? PostAmputationStatus { get; set; }
 
-        public bool CausalgiaStatus { get; set; }
-
-        public bool CausalgiaMuscle { get; set; }
-
-        public bool PostAmputationStatus { get; set; }
+        public string? OtherPainDiagnosis { get; set; }
 
         public string SubjectPrimaryChronicPainIndication { get; set; }
 
-        public bool TreatmentForPainStatus { get; set; }
+        public string TreatmentForPainStatus { get; set; }
 
         public string? TreatmentYesOccupationalTherapy { get; set; }
 
@@ -260,7 +256,7 @@ namespace myhealthhub.web.Models.Baseline
 
         public string? TreatmentYesHypnotherapy { get; set; }
 
-        public bool InjectionsInterventionsStatus { get; set; }
+        public string InjectionsInterventionsStatus { get; set; }
 
         public string? IITransforraminal { get; set; }
 
@@ -282,6 +278,6 @@ namespace myhealthhub.web.Models.Baseline
 
         public string? IIPreviousDRG { get; set; }
 
-        public bool ImplantableDrug { get; set; }
+        public string ImplantableDrug { get; set; }
     }
 }

@@ -263,22 +263,19 @@ namespace myhealthhub.api.Models.Entities
 
         public string? PeripheralNeuropathyStatus { get; set; }
 
-        public bool DiabeticStatus { get; set; }
+        public string? SympatheticDystrophy { get; set; }
 
-        public bool ChemotherapyRelatedStatus { get; set; }
+        public string? CausalgiaMuscle { get; set; }
 
-        public bool ReflexSympatheticDystrophyStatus { get; set; }
+        public string? PostAmputationStatus { get; set; }
 
-        public bool CausalgiaStatus { get; set; }
-
-        public bool CausalgiaMuscle { get; set; }
-
-        public bool PostAmputationStatus { get; set; }
+        public string? OtherPainDiagnosis { get; set; }
 
         [Required]
         public string SubjectPrimaryChronicPainIndication { get; set; }
 
-        public bool TreatmentForPainStatus { get; set; }
+        [Required]
+        public string TreatmentForPainStatus { get; set; }
 
         public string? TreatmentYesOccupationalTherapy { get; set; }
 
@@ -297,7 +294,7 @@ namespace myhealthhub.api.Models.Entities
         public string? TreatmentYesHypnotherapy { get; set; }
 
         [Required]
-        public bool InjectionsInterventionsStatus { get; set; }
+        public string InjectionsInterventionsStatus { get; set; }
 
         public string? IITransforraminal { get; set; }
 
@@ -319,6 +316,7 @@ namespace myhealthhub.api.Models.Entities
 
         public string? IIPreviousDRG { get; set; }
 
-        public bool ImplantableDrug { get; set; }
+        [Required]
+        public string ImplantableDrug { get; set; }
     }
 }

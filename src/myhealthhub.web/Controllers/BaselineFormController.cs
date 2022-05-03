@@ -7,6 +7,8 @@ namespace myhealthhub.web.Controllers
     [Authorize]
     public class BaselineFormController : Controller
     {
+
+
         public BaselineFormController()
         {
             // Dependency injection here
@@ -30,6 +32,13 @@ namespace myhealthhub.web.Controllers
 
                 return View(baselineQueryString);
             }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([FromForm] Baseline baselineForm)
+        {
+            return Ok();
         }
     } 
 }

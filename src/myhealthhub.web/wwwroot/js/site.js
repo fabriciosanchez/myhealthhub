@@ -235,7 +235,9 @@ $(function () {
                 SmokerStatus: "required",
                 ChronicPainRecurrency: "required",
                 LevelPainZeroToTen: "required",
-                SubjectPrimaryChronicPainIndication: "required"
+                SubjectPrimaryChronicPainIndication: "required",
+                TreatmentForPainStatus: "required",
+                ImplantableDrug: "required"
             },
             messages: {
                 SiteName: "Please, specify the site name.",
@@ -265,7 +267,9 @@ $(function () {
                 SmokerStatus: "Select an option",
                 ChronicPainRecurrency: "Select an option",
                 LevelPainZeroToTen: "Select an option",
-                SubjectPrimaryChronicPainIndication: "Select an option"
+                SubjectPrimaryChronicPainIndication: "Select an option",
+                TreatmentForPainStatus: "Select an option",
+                ImplantableDrug: "Select an option"
             }
         });
 });

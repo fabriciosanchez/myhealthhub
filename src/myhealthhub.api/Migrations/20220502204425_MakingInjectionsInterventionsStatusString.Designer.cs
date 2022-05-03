@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myhealthhub.api.Models;
 
@@ -11,9 +12,10 @@ using myhealthhub.api.Models;
 namespace myhealthhub.api.Migrations
 {
     [DbContext(typeof(MyHealthHubContext))]
-    partial class MyHealthHubContextModelSnapshot : ModelSnapshot
+    [Migration("20220502204425_MakingInjectionsInterventionsStatusString")]
+    partial class MakingInjectionsInterventionsStatusString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,8 +50,14 @@ namespace myhealthhub.api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CausalgiaMuscle")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("CausalgiaMuscle")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CausalgiaStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("ChemotherapyRelatedStatus")
+                        .HasColumnType("bit");
 
                     b.Property<string>("ChronicPainEpisodeFrequency")
                         .HasColumnType("nvarchar(max)");
@@ -217,6 +225,9 @@ namespace myhealthhub.api.Migrations
                     b.Property<int>("DaysMissedDuePain")
                         .HasColumnType("int");
 
+                    b.Property<bool>("DiabeticStatus")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Ethinicity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -299,13 +310,11 @@ namespace myhealthhub.api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImplantableDrug")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ImplantableDrug")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("InjectionsInterventionsStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("InjectionsInterventionsStatus")
+                        .HasColumnType("bit");
 
                     b.Property<string>("InsuranceSituation")
                         .IsRequired()
@@ -317,9 +326,6 @@ namespace myhealthhub.api.Migrations
                     b.Property<bool>("NeckUperLimbSchemiaStatus")
                         .HasColumnType("bit");
 
-                    b.Property<string>("OtherPainDiagnosis")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PainPreventToWork")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -330,8 +336,8 @@ namespace myhealthhub.api.Migrations
                     b.Property<Guid>("PhysicianId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("PostAmputationStatus")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("PostAmputationStatus")
+                        .HasColumnType("bit");
 
                     b.Property<string>("PostOperativePainTypeSurgery1")
                         .HasColumnType("nvarchar(max)");
@@ -384,6 +390,9 @@ namespace myhealthhub.api.Migrations
                     b.Property<string>("RaceWhiteCaucasian")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("ReflexSympatheticDystrophyStatus")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Sex")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -407,18 +416,14 @@ namespace myhealthhub.api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SympatheticDystrophy")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("TimeChronicPainMonths")
                         .HasColumnType("int");
 
                     b.Property<int?>("TimeChronicPainYears")
                         .HasColumnType("int");
 
-                    b.Property<string>("TreatmentForPainStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("TreatmentForPainStatus")
+                        .HasColumnType("bit");
 
                     b.Property<string>("TreatmentYesAcunpunture")
                         .HasColumnType("nvarchar(max)");

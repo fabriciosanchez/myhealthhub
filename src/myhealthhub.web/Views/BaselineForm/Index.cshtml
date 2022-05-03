@@ -126,31 +126,38 @@ else
                     <div class="col-md">
                         <div class="form-floating">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="RaceAmericanIndian" name="RaceAmericanIndian" value="American Indian or Alaskan Native">
+                                <input type="hidden" name="RaceAmericanIndian" value="false" />
+                                <input class="form-check-input" type="checkbox" id="RaceAmericanIndian" name="RaceAmericanIndian" value="true" />
                                 <label class="form-check-label" for="RaceAmericanIndian">American Indian or Alaskan Native</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="RaceAsian" name="RaceAsian" value="Asian (Chinese, Korean, Japanese, Other)">
+                                <input type="hidden" name="RaceAsian" value="false" />
+                                <input class="form-check-input" type="checkbox" id="RaceAsian" name="RaceAsian" value="true" />
                                 <label class="form-check-label" for="RaceAsian">Asian (Chinese, Korean, Japanese, Other)</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="RaceBlackAfrican" name="RaceBlackAfrican" value="Black or African American">
+                                <input type="hidden" name="RaceBlackAfrican" value="false" />
+                                <input class="form-check-input" type="checkbox" id="RaceBlackAfrican" name="RaceBlackAfrican" value="true" />
                                 <label class="form-check-label" for="RaceBlackAfrican">Black or African American</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="RaceNativeHawaian" name="RaceNativeHawaian" value="Native Hawaiian or Other Pacific Islander">
+                                <input type="hidden" name="RaceNativeHawaian" value="false" />
+                                <input class="form-check-input" type="checkbox" id="RaceNativeHawaian" name="RaceNativeHawaian" value="true" />
                                 <label class="form-check-label" for="RaceNativeHawaian">Native Hawaiian or Other Pacific Islander</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="RaceWhiteCaucasian" name="RaceWhiteCaucasian" value="White or Caucasian">
+                                <input type="hidden" name="RaceWhiteCaucasian" value="false" />
+                                <input class="form-check-input" type="checkbox" id="RaceWhiteCaucasian" name="RaceWhiteCaucasian" value="true" />
                                 <label class="form-check-label" for="RaceWhiteCaucasian">White or Caucasian</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="RaceOther" name="RaceOther" value="Other">
+                                <input type="hidden" name="RaceOther" value="false" />
+                                <input class="form-check-input" type="checkbox" id="RaceOther" name="RaceOther" value="true" />
                                 <label class="form-check-label" for="RaceOther">Other</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="RaceDeclined" name="RaceDeclined" value="Declined or unable to disclose">
+                                <input type="hidden" name="RaceDeclined" value="false" />
+                                <input class="form-check-input" type="checkbox" id="RaceDeclined" name="RaceDeclined" value="true" />
                                 <label class="form-check-label" for="RaceDeclined">Declined or unable to disclose</label>
                             </div>
                         </div>
@@ -393,7 +400,7 @@ else
                     <div class="col-md">
                         <div class="form-floating">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFrontStatus" name="ChronicPainLocationFrontStatus" value="No pain at front side">
+                                <input class="form-check-input" type="checkbox" value="" id="ChronicPainLocationFrontStatus" name="ChronicPainLocationFrontStatus">
                                 <label class="form-check-label" for="ChronicPainLocationFrontStatus">No pain at front side</label>
                             </div>
                             <div class="form-check">
@@ -912,6 +919,162 @@ else
 
         </fieldset>
         <!-- End section 5 -->
+
+        <!-- Section 6:  -->
+        <fieldset class="fieldset" id="fsTreatmentForPain" name="fsTreatmentForPain" style="margin-top: 20px;">
+            <legend class="legend">5. Treatment for Pain</legend>
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="TreatmentForPainStatus" name="TreatmentForPainStatus">
+                            <option value="" selected></option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <label for="TreatmentForPainStatus">Has the subject used manual therapy to treat pain?</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <span style="padding-top: 10px; padding-bottom: 10px">
+                    <strong>If Yes, check all that apply:</strong>
+                </span>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="TreatmentYesOccupationalTherapy" name="TreatmentYesOccupationalTherapy" value="yes">
+                            <label class="form-check-label" for="TreatmentYesOccupationalTherapy">Occupational Therapy</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="TreatmentYesAcunpunture" name="TreatmentYesAcunpunture" value="yes">
+                            <label class="form-check-label" for="TreatmentYesAcunpunture">Acupuncture</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="TreatmentYesPhysicalTherapy" name="TreatmentYesPhysicalTherapy" value="yes">
+                            <label class="form-check-label" for="TreatmentYesPhysicalTherapy">Physical Therapy</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="TreatmentYesMassageTherapy" name="TreatmentYesMassageTherapy" value="yes">
+                            <label class="form-check-label" for="TreatmentYesMassageTherapy">Massage Therapy</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="TreatmentYesChiropracticTherapy" name="TreatmentYesChiropracticTherapy" value="yes">
+                            <label class="form-check-label" for="TreatmentYesChiropracticTherapy">Chiropractic Therapy</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="TreatmentYesCogBehavioralTherapy" name="TreatmentYesCogBehavioralTherapy" value="yes">
+                            <label class="form-check-label" for="TreatmentYesCogBehavioralTherapy">Cognitive Behavioral Therapy</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="TreatmentYesPsychotherapy" name="TreatmentYesPsychotherapy" value="yes">
+                            <label class="form-check-label" for="TreatmentYesPsychotherapy">Psychotherapy</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="TreatmentYesHypnotherapy" name="TreatmentYesHypnotherapy" value="yes">
+                            <label class="form-check-label" for="TreatmentYesHypnotherapy">Hypnotherapy</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="InjectionsInterventionsStatus" name="InjectionsInterventionsStatus">
+                            <option value="" selected></option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <label for="InjectionsInterventionsStatus">Has the subject undergone any injections or interventions to treat pain?</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2" style="margin-top: 5px;">
+                <span style="padding-top: 10px; padding-bottom: 10px">
+                    <strong>If Yes, check all that apply:</strong>
+                </span>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="IITransforraminal" name="IITransforraminal" value="yes">
+                            <label class="form-check-label" for="IITransforraminal">Transforaminal</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="IITranslaminar" name="IITranslaminar" value="yes">
+                            <label class="form-check-label" for="IITranslaminar">Translaminar</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="IICaudal" name="IICaudal" value="yes">
+                            <label class="form-check-label" for="IICaudal">Caudal</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="IIFacetInjections" name="IIFacetInjections" value="yes">
+                            <label class="form-check-label" for="IIFacetInjections">Facet injection(s)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="IISacroillacJoint" name="IISacroillacJoint" value="yes">
+                            <label class="form-check-label" for="IISacroillacJoint">Sacroiliac joint injection(s)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="IIOtherJoint" name="IIOtherJoint" value="yes">
+                            <label class="form-check-label" for="IIOtherJoint">Other joint injection(s)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="IIRadiofrequency" name="IIRadiofrequency" value="yes">
+                            <label class="form-check-label" for="IIRadiofrequency">Radiofrequency ablation/rhizotomy</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="IIIntradiscal" name="IIIntradiscal" value="yes">
+                            <label class="form-check-label" for="IIIntradiscal">Intradiscal therapy</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="form-floating">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="IIPreviousSCS" name="IIPreviousSCS" value="yes">
+                            <label class="form-check-label" for="IIPreviousSCS">Previous SCS</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="IIPreviousDRG" name="IIPreviousDRG" value="yes">
+                            <label class="form-check-label" for="IIPreviousDRG">Previous DRG</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-2" style="margin-top: 5px;">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" id="ImplantableDrug" name="ImplantableDrug">
+                            <option value="" selected></option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <label for="ImplantableDrug">Implantable drug pump still implanted?</label>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+        </fieldset>
+        <!-- End section 6 -->
 
         <button type="submit" class="btn btn-success" style="margin-top: 20px;">
             <i class="fa-solid fa-floppy-disk"></i>
